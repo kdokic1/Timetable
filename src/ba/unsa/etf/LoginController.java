@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -15,6 +17,8 @@ import java.io.IOException;
 
 public class LoginController extends Application {
     public ImageView imgView=new ImageView();
+    public TextField loginUsername=new TextField();
+    public PasswordField loginPass=new PasswordField();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -38,19 +42,14 @@ public class LoginController extends Application {
         Stage signupStage = new Stage();
 
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/signup.fxml"));
-        loader.setController();
-
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/signup.fxml"));
-//        signupStage.setTitle("Timetable");
-//        Image img = new Image("/images/mfp.png");
-//        imgView.setImage(img);
-//        signupStage.setScene(new Scene(root, 700, 500));
-//        signupStage.show();
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText("haha");
-        alert.setHeaderText("haha");
-        alert.showAndWait();
+        SignUpController ctrl = new SignUpController();
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        signupStage.setTitle("Timetable");
+        Image img = new Image("/images/mfp.png");
+        imgView.setImage(img);
+        signupStage.setScene(new Scene(root, 700, 500));
+        signupStage.show();
     }
 
 }
