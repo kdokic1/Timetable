@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -30,12 +31,15 @@ public class LoginController extends Application {
 
 
     @FXML
-    public void signup(ActionEvent actionEvent) throws IOException {
-//        Stage stg = (Stage) imgView.getScene().getWindow();
-//        stg.close();
+    public void signup(MouseEvent mouseEvent) throws IOException {
+        Stage stg = (Stage) imgView.getScene().getWindow();
+        stg.close();
 
-//        Stage signupStage = new Stage();
-//
+        Stage signupStage = new Stage();
+
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/signup.fxml"));
+        loader.setController();
+
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/signup.fxml"));
 //        signupStage.setTitle("Timetable");
 //        Image img = new Image("/images/mfp.png");
