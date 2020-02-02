@@ -17,9 +17,9 @@
                     </font>
                 </Label>
             </children></AnchorPane>
-        <AnchorPane layoutX="368.0" layoutY="43.0" prefHeight="414.0" prefWidth="282.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="368.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="43.0">
+        <AnchorPane layoutX="368.0" layoutY="31.0" prefHeight="426.0" prefWidth="282.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="368.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="31.0">
             <children>
-                <Label layoutX="69.0" layoutY="35.0" prefHeight="54.0" prefWidth="148.0" text="Sign up" textFill="WHITE">
+                <Label layoutX="69.0" layoutY="14.0" prefHeight="54.0" prefWidth="148.0" text="Sign up" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="35.0" />
                     </font>
@@ -27,23 +27,26 @@
                         <Glow level="0.52" />
                     </effect>
                 </Label>
-                <TextField layoutX="32.0" layoutY="108.0" prefHeight="26.0" prefWidth="222.0" promptText="first name" style="-fx-background-radius: 100PX;">
+                <TextField layoutX="32.0" layoutY="85.0" prefHeight="26.0" prefWidth="222.0" promptText="first name" style="-fx-background-radius: 100PX;">
                     <font>
                         <Font name="System Italic" size="12.0" />
                     </font>
                 </TextField>
-                <PasswordField layoutX="32.0" layoutY="158.0" prefHeight="26.0" prefWidth="222.0" promptText="last name" style="-fx-background-radius: 100PX;">
+                <PasswordField layoutX="32.0" layoutY="235.0" prefHeight="26.0" prefWidth="222.0" promptText="password" style="-fx-background-radius: 100PX;">
                     <font>
                         <Font name="System Italic" size="12.0" />
                     </font>
                 </PasswordField>
-                <Button layoutX="67.0" layoutY="272.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="148.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="sign up" textAlignment="CENTER">
+                <Button layoutX="67.0" layoutY="276.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="148.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="sign up" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Label layoutX="40.0" layoutY="309.0" text="Already have an account?" textFill="WHITE" />
-                <Label layoutX="189.0" layoutY="309.0" text="SIGN IN" textFill="WHITE">
+                <Label layoutX="40.0" layoutY="323.0" text="Already have an account?" textFill="WHITE" />
+            <TextField layoutX="33.0" layoutY="123.0" prefHeight="26.0" prefWidth="222.0" promptText="last name" style="-fx-background-radius: 100PX;" />
+            <TextField layoutX="33.0" layoutY="162.0" prefHeight="26.0" prefWidth="222.0" promptText="e-mail" style="-fx-background-radius: 100PX;" />
+            <TextField layoutX="33.0" layoutY="199.0" prefHeight="26.0" prefWidth="222.0" promptText="username" style="-fx-background-radius: 100PX;" />
+                <Label layoutX="182.0" layoutY="323.0" text="SIGN IN" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="12.0" />
                     </font>
