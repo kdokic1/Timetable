@@ -54,6 +54,46 @@
                         <Glow />
                     </effect>
                 </Label>
+            <ImageView layoutX="228.0" layoutY="240.0">
+               <image>
+                  <Image url="@../../../../AppData/Local/Temp/icons8_password_16px_1.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.29" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="228.0" layoutY="167.0">
+               <image>
+                  <Image url="@../../../../AppData/Local/Temp/icons8_secured_letter_50px.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.36" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="220.0" layoutY="85.0">
+               <image>
+                  <Image url="@../../../../AppData/Local/Temp/icons8_user_male_64px_5.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.59" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="220.0" layoutY="123.0">
+               <image>
+                  <Image url="@../../../../AppData/Local/Temp/icons8_user_male_64px_5.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.59" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="220.0" layoutY="199.0">
+               <image>
+                  <Image url="@../../../../AppData/Local/Temp/icons8_user_male_64px_5.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.59" />
+               </effect>
+            </ImageView>
             </children>
             <effect>
                 <DropShadow>
