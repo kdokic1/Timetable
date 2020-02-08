@@ -55,16 +55,42 @@ public class SignUpController {
     }
 
     public void signUpAction(ActionEvent actionEvent) throws IOException {
+        if(!errorLabel.getText().isEmpty())
+            errorLabel.setText("");
+
         ArrayList<User> users = new ArrayList<>();
         users=dao.getAllUsers();
-        if(users!=null) {
+
+        if(fldUsername.getText().isEmpty()){
+            errorLabel.setText("You did not enter your username");
+            return;
+        }
+
+        if(fldFirstName.getText().isEmpty()){
+            errorLabel.setText("You did not enter your first name");
+            return;
+        }
+
+        if(fldLastName.getText().isEmpty()){
+            errorLabel.setText("You did not enter your last name");
+            return;
+        }
+
+        if(fldEmail.getText().isEmpty()){
+            errorLabel.setText("You did not enter your e-mail");
+            return;
+        }
+
+        if(fldPass.getText().isEmpty()){
+            errorLabel.setText("You did not enter your password");
+            return;
+        }
             for (User u : users) {
                 if (u.getUsername().equals(fldUsername.getText())) {
-                    errorLabel.setText("This username is already used, try again");
+                    errorLabel.setText("This username is already used");
                     return;
                 }
             }
-        }
 
         if(!validEmail(fldEmail.getText())){
             errorLabel.setText("Incorrect e-mail");
@@ -82,7 +108,7 @@ public class SignUpController {
         signInFun();
     }
 
-    public boolean validEmail(String emailToCheck){
+    private boolean validEmail(String emailToCheck){
         if(!emailToCheck.contains("@"))
             return false;
         else{
@@ -93,7 +119,7 @@ public class SignUpController {
         return true;
     }
 
-    public boolean validPass(String password){
+    private boolean validPass(String password){
         if(password.length()<8)
             return false;
         boolean containsNumber=false,containsCapitalLetter=false;
@@ -108,11 +134,11 @@ public class SignUpController {
         return containsCapitalLetter && containsNumber;
     }
 
-    public boolean isNumber(char c){
+    private boolean isNumber(char c){
         return (c>='0' && c<='9');
     }
 
-    public boolean isCapitalLetter(char l){
+    private boolean isCapitalLetter(char l){
         return l>='A' && l<='Z';
     }
 }

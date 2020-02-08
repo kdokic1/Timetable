@@ -67,6 +67,7 @@
                   <ColorAdjust brightness="0.29" />
                </effect>
             </ImageView>
+            <Label fx:id="errorLabel" layoutX="37.0" layoutY="276.0" prefHeight="18.0" prefWidth="212.0" textFill="#ffe100" />
          </children>
          <effect>
             <DropShadow>
