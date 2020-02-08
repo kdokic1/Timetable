@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="users" uuid="2b1abaec-68fb-41ea-9477-19e186ede75b">
+    <data-source source="LOCAL" name="timetable" uuid="b2ebca69-beb7-4e08-989f-181ce2c20929">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Kanita\IdeaProjects\Raspored\users.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\Kanita\IdeaProjects\Raspored\timetable.db</jdbc-url>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.25.1/license.txt</url>

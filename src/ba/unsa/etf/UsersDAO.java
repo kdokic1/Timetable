@@ -23,7 +23,7 @@ public class UsersDAO {
 
     private UsersDAO() {
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:users.db"); //prvo sve konektujemo sa bazom
+            conn = DriverManager.getConnection("jdbc:sqlite:timetable.db"); //prvo sve konektujemo sa bazom
 
         try{
             getAllUsers=conn.prepareStatement("SELECT * from user");
@@ -49,7 +49,7 @@ public class UsersDAO {
     private void regenerisiBazu() {
         Scanner ulaz = null;
         try {
-            ulaz = new Scanner( new FileInputStream("users.db.sql"));
+            ulaz = new Scanner( new FileInputStream("timetable.db.sql"));
             String sqlUpit="";
             while(ulaz.hasNext()){
                 sqlUpit+=ulaz.nextLine();
