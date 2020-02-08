@@ -13,12 +13,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.io.IOException;
 
 public class LoginController extends Application {
     public ImageView imgView=new ImageView();
     public TextField loginUsername=new TextField();
     public PasswordField loginPass=new PasswordField();
+
+    @FXML
+    public void initialize(){
+
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -34,7 +43,6 @@ public class LoginController extends Application {
     }
 
 
-    @FXML
     public void signup(MouseEvent mouseEvent) throws IOException {
         Stage stg = (Stage) imgView.getScene().getWindow();
         stg.close();
@@ -50,6 +58,11 @@ public class LoginController extends Application {
         imgView.setImage(img);
         signupStage.setScene(new Scene(root, 700, 500));
         signupStage.show();
+    }
+
+    public void loginAction(ActionEvent actionEvent){
+        Stage stg = (Stage) imgView.getScene().getWindow();
+        stg.close();
     }
 
 }
