@@ -6,4 +6,20 @@ import java.util.ArrayList;
 public class Timetables {
     private ArrayList<Timetable> timetables=new ArrayList<>();
     private User user;
+
+    public ArrayList<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public void setTimetables(ArrayList<Timetable> timetables) {
+        this.timetables = timetables;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

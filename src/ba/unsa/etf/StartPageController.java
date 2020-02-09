@@ -18,11 +18,14 @@ import java.util.ArrayList;
 
 public class StartPageController {
     public SubjectDAO dao = SubjectDAO.getInstance();
+    public TimetableDAO timetableDAO = TimetableDAO.getInstance();
     public Label userLabel = new Label();
     public String username = new String();
-    public ChoiceBox<Subject> cbSubjects = new ChoiceBox<>();
+    public ChoiceBox<Timetable> cbSubjects = new ChoiceBox<>();
     public ArrayList<Subject> subjects = new ArrayList<>();
     public ObservableList<Subject> subjectNames = FXCollections.observableArrayList();
+    public ObservableList<Timetable> allTimetables= FXCollections.observableArrayList();
+    private Timetables timetables=new Timetables();
 
     public String getUsername() {
         return username;
@@ -39,22 +42,27 @@ public class StartPageController {
 
     @FXML
     public void initialize() throws SQLException {
-        subjects=dao.getAllSubjects(username);
-        subjectNames.addAll(subjects);
-        cbSubjects.setItems(subjectNames);
+//        subjects=dao.getAllSubjects(username);
+//        subjectNames.addAll(subjects);
+//        cbSubjects.setItems(subjectNames);
+
+        timetables=timetableDAO.getAllTimetablesForUser(username);
+        allTimetables.addAll(timetables.getTimetables());
+        cbSubjects.setItems(allTimetables);
+
 
     }
 
     private void setItemsInCheckBox() throws SQLException {
-        subjects.removeAll(subjects);
-        subjects=dao.getAllSubjects(username);
-        subjectNames.removeAll(subjectNames);
-        subjectNames.addAll(subjects);
-        cbSubjects.setItems(subjectNames);
+        timetables=null;
+        timetables=timetableDAO.getAllTimetablesForUser(username);
+        allTimetables.addAll(timetables.getTimetables());
+        cbSubjects.setItems(allTimetables);
     }
 
     public StartPageController(String username) throws SQLException {
         this.username=username;
+        timetables=timetableDAO.getAllTimetablesForUser(username);
         subjects=dao.getAllSubjects(username);
     }
 
