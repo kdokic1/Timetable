@@ -109,4 +109,27 @@ public class StartPageController {
 
         removeSubjectStage.show();
     }
+
+    public void editSubjectAction(ActionEvent actionEvent) throws IOException {
+        Stage editSubjecStage= new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editSubject.fxml"));
+        EditSubjectController ctrl = new EditSubjectController(username);
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        editSubjecStage.setTitle("Edit subject");
+        editSubjecStage.setScene(new Scene(root,420,300));
+        editSubjecStage.setOnHiding(event -> {
+            if(ctrl.getEditedSubject()!=null){
+                Subject newSubject = ctrl.getEditedSubject();
+                Subject oldSubject = ctrl.getOldSubject();
+                try {
+                    dao.editSubject(newSubject,oldSubject);
+                    setItemsInCheckBox();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        editSubjecStage.show();
+    }
 }

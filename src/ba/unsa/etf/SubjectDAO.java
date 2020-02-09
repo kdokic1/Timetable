@@ -14,7 +14,7 @@ public class SubjectDAO {
         return conn;
     }
 
-    private PreparedStatement getAllSubjectsForUserQuery, getUserByUsernameQuery, addNewSubjectQuery, removeSubjectQuery;
+    private PreparedStatement getAllSubjectsForUserQuery, getUserByUsernameQuery, addNewSubjectQuery, removeSubjectQuery, editSubjectQuery;
 
     public static SubjectDAO getInstance() {
         if (instance == null) instance = new SubjectDAO(); //samo jedna instanca baze, da bi postojao samo jedan ulaz
@@ -40,6 +40,7 @@ public class SubjectDAO {
                 getUserByUsernameQuery=conn.prepareStatement("SELECT * from user where username=?");
                 addNewSubjectQuery=conn.prepareStatement("INSERT INTO subject VALUES (?,?,?,?)");
                 removeSubjectQuery=conn.prepareStatement("DELETE FROM subject WHERE subject_name=?");
+                editSubjectQuery=conn.prepareStatement("UPDATE subject SET subject_name=?, user=?, teacher=?, classroom=? where subject_name=?");
             }catch (SQLException e){
                 e.printStackTrace();
             }
@@ -112,5 +113,14 @@ public class SubjectDAO {
     public void removeSubject(Subject subject) throws SQLException {
         removeSubjectQuery.setString(1,subject.getSubjectName());
         removeSubjectQuery.executeUpdate();
+    }
+
+    public void editSubject(Subject newSubject, Subject oldSubject) throws SQLException {
+        editSubjectQuery.setString(1,newSubject.getSubjectName());
+        editSubjectQuery.setString(2,newSubject.getUser().getUsername());
+        editSubjectQuery.setString(3,newSubject.getTeacher());
+        editSubjectQuery.setString(4,newSubject.getClassroom());
+        editSubjectQuery.setString(5,oldSubject.getSubjectName());
+        editSubjectQuery.executeUpdate();
     }
 }

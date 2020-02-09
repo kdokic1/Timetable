@@ -44,7 +44,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                     </font>
                 </Label>
-            <Button layoutX="63.0" layoutY="302.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="edit subject                   ">
+            <Button layoutX="63.0" layoutY="302.0" mnemonicParsing="false" onAction="#editSubjectAction" prefHeight="26.0" prefWidth="158.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="edit subject                   ">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
