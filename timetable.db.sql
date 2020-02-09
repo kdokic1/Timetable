@@ -16,4 +16,5 @@ CREATE TABLE IF NOT EXISTS "user" (
 	PRIMARY KEY("username")
 );
 INSERT INTO "user" VALUES ('kdokic1','Kanita','Đokić','kdokic1@etf.unsa.ba','Uquahlahying18523');
+INSERT INTO "subject" VALUES ('math','kdokic1','Muslija Omerović','classroom');
 COMMIT;

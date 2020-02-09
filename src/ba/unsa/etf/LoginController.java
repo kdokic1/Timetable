@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginController extends Application {
@@ -61,7 +62,7 @@ public class LoginController extends Application {
         signupStage.show();
     }
 
-    public void loginAction(ActionEvent actionEvent) throws IOException {
+    public void loginAction(ActionEvent actionEvent) throws IOException, SQLException {
         if(!errorLabel.getText().isEmpty())
             errorLabel.setText("");
         ArrayList<User> users = new ArrayList<>();
@@ -70,15 +71,18 @@ public class LoginController extends Application {
         for(User u : users){
             if(u.getUsername().equals(loginUsername.getText())){
                 if(u.getPassword().equals(loginPass.getText())){
+                    String username=loginUsername.getText();
                     Stage stg = (Stage) loginUsername.getScene().getWindow();
                     stg.close();
 
                     Stage startStage=new Stage();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"));
-                    StartPageController ctrl = new StartPageController();
+                    StartPageController ctrl = new StartPageController(username);
                     loader.setController(ctrl);
                     Parent root = loader.load();
                     startStage.setTitle("Timetable");
+                    ctrl.setUsername(username);
+                    ctrl.setUserLabelText(username);
                     startStage.setScene(new Scene(root,570,440));
                     startStage.show();
                 }

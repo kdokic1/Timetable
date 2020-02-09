@@ -4,11 +4,13 @@ public class Subject {
     private String subjectName;
     private String teacher;
     private String classroom;
+    private User user;
 
-    public Subject(String subjectName, String teacher, String classroom) {
+    public Subject(String subjectName, String teacher, String classroom, User user) {
         this.subjectName = subjectName;
         this.teacher = teacher;
         this.classroom = classroom;
+        this.user = user;
     }
 
     public String getSubjectName() {
@@ -33,5 +35,18 @@ public class Subject {
 
     public void setClassroom(String classroom) {
         this.classroom = classroom;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return subjectName;
     }
 }
