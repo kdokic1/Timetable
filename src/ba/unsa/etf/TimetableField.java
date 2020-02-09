@@ -8,5 +8,6 @@ public class TimetableField {
     private Subject subject;
     private Time starts;
     private Time ends;
-
+    private Days day;
+    private int ordinalNumber;
 }
