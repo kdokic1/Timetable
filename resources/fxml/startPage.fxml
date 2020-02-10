@@ -34,7 +34,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button layoutX="63.0" layoutY="181.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="remove timetable          ">
+                <Button layoutX="63.0" layoutY="181.0" mnemonicParsing="false" onAction="#removeTimetableAction" prefHeight="26.0" prefWidth="158.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="remove timetable          ">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>

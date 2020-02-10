@@ -13,7 +13,7 @@ public class TimetableDAO {
         return conn;
     }
 
-    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery;
+    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery;
 
     public static TimetableDAO getInstance() {
         if (instance == null) instance = new TimetableDAO(); //samo jedna instanca baze, da bi postojao samo jedan ulaz
@@ -39,6 +39,7 @@ public class TimetableDAO {
         try{
             getUserByUsername =conn.prepareStatement("SELECT * from user where username=?");
             addTimetableQuery=conn.prepareStatement("INSERT INTO timetable values (?,?,?)");
+            deleteTimetableQuery=conn.prepareStatement("DELETE from timetable where timetable_name=?");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -95,13 +96,13 @@ public class TimetableDAO {
     public void addTimetable(Timetable timetable) throws SQLException {
         addTimetableQuery.setString(1,timetable.getTimetableName());
         addTimetableQuery.setString(2,timetable.getUser().getUsername());
-        if(timetable.isIncludeSaturday()) {
-            addTimetableQuery.setInt(3, 1);
-        }
-        else{
-            addTimetableQuery.setInt(3,0);
-        }
+        addTimetableQuery.setBoolean(3, timetable.isIncludeSaturday());
         addTimetableQuery.executeUpdate();
+    }
+
+    public void deleteTimetable(Timetable timetable) throws SQLException {
+        deleteTimetableQuery.setString(1,timetable.getTimetableName());
+        deleteTimetableQuery.executeUpdate();
     }
 
 }

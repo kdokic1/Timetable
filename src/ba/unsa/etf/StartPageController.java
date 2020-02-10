@@ -161,4 +161,8 @@ public class StartPageController {
         });
         addNewTimetableStage.show();
     }
+
+    public void removeTimetableAction(ActionEvent actionEvent){
+
+    }
 }
