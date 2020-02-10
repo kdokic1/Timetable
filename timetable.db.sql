@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS "timetable_field" (
 );
 INSERT INTO "user" VALUES ('kdokic1','Kanita','Đokić','kdokic1@etf.unsa.ba','Uquahlahying18523');
 INSERT INTO "subject" VALUES ('math','kdokic1','Muslija Omerović','classroom');
-INSERT INTO "timetable" VALUES ('novi','kdokic1','1');
+INSERT INTO "timetable" VALUES ('novi','kdokic1','0');
 INSERT INTO "timetable_field" VALUES ('novi','kdokic1','mon','2','math','11','12');
 COMMIT;

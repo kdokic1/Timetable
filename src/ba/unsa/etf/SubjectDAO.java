@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class SubjectDAO {
     private static SubjectDAO instance = null;
-    private Connection conn;
+    private static Connection conn;
 
-    public Connection getConn() {
+    public static Connection getConn() {
         return conn;
     }
 
@@ -22,29 +22,26 @@ public class SubjectDAO {
     }
 
     private SubjectDAO(){
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:timetable.db"); //prvo sve konektujemo sa bazom
+        //            conn = DriverManager.getConnection("jdbc:sqlite:timetable.db"); //prvo sve konektujemo sa bazom
+        conn=UsersDAO.getConn();
 
-            try{
+        try{
+            getAllSubjectsForUserQuery =conn.prepareStatement("SELECT * from subject s where s.user=?");
+        }catch (SQLException e){
+            regenerisiBazu();
+            try {
                 getAllSubjectsForUserQuery =conn.prepareStatement("SELECT * from subject s where s.user=?");
-            }catch (SQLException e){
-                regenerisiBazu();
-                try {
-                    getAllSubjectsForUserQuery =conn.prepareStatement("SELECT * from subject s where s.user=?");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
+        }
 
-            try{
-                getUserByUsernameQuery=conn.prepareStatement("SELECT * from user where username=?");
-                addNewSubjectQuery=conn.prepareStatement("INSERT INTO subject VALUES (?,?,?,?)");
-                removeSubjectQuery=conn.prepareStatement("DELETE FROM subject WHERE subject_name=?");
-                editSubjectQuery=conn.prepareStatement("UPDATE subject SET subject_name=?, user=?, teacher=?, classroom=? where subject_name=?");
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        } catch (SQLException e) {
+        try{
+            getUserByUsernameQuery=conn.prepareStatement("SELECT * from user where username=?");
+            addNewSubjectQuery=conn.prepareStatement("INSERT INTO subject VALUES (?,?,?,?)");
+            removeSubjectQuery=conn.prepareStatement("DELETE FROM subject WHERE subject_name=?");
+            editSubjectQuery=conn.prepareStatement("UPDATE subject SET subject_name=?, user=?, teacher=?, classroom=? where subject_name=?");
+        }catch (SQLException e){
             e.printStackTrace();
         }
     }

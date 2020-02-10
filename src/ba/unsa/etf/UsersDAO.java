@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class UsersDAO {
     private static UsersDAO instance = null;
-    private Connection conn;
+    private static Connection conn;
 
-    public Connection getConn() {
+    public static Connection getConn() {
         return conn;
     }
 

@@ -19,7 +19,7 @@
                         <Font name="System Bold Italic" size="20.0" />
                     </font>
                 </Label>
-                <Button layoutX="64.0" layoutY="139.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="157.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="add new timetable        ">
+                <Button layoutX="64.0" layoutY="139.0" mnemonicParsing="false" onAction="#addNewTimetableAction" prefHeight="26.0" prefWidth="157.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="add new timetable        ">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>

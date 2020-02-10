@@ -7,6 +7,13 @@ public class Timetables {
     private ArrayList<Timetable> timetables=new ArrayList<>();
     private User user;
 
+    public Timetables(){
+    }
+
+    public Timetables(Timetables timetables){
+        this.timetables=timetables.getTimetables();
+    }
+
     public ArrayList<Timetable> getTimetables() {
         return timetables;
     }

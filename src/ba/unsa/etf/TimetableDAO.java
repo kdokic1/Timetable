@@ -7,13 +7,13 @@ import java.util.Scanner;
 
 public class TimetableDAO {
     private static TimetableDAO instance = null;
-    private Connection conn;
+    private static Connection conn;
 
-    public Connection getConn() {
+    public static Connection getConn() {
         return conn;
     }
 
-    private PreparedStatement getAllTimetablesQuery, getUserByUsername;
+    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery;
 
     public static TimetableDAO getInstance() {
         if (instance == null) instance = new TimetableDAO(); //samo jedna instanca baze, da bi postojao samo jedan ulaz
@@ -21,26 +21,25 @@ public class TimetableDAO {
     }
 
     private TimetableDAO(){
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:timetable.db"); //prvo sve konektujemo sa bazom
+        //conn = DriverManager.getConnection("jdbc:sqlite:timetable.db"); //prvo sve konektujemo sa bazom
+        conn = UsersDAO.getConn();
 
-            try{
+
+        try{
+            getAllTimetablesQuery =conn.prepareStatement("SELECT * from timetable t where t.user=?");
+        }catch (SQLException e){
+            regenerisiBazu();
+            try {
                 getAllTimetablesQuery =conn.prepareStatement("SELECT * from timetable t where t.user=?");
-            }catch (SQLException e){
-                regenerisiBazu();
-                try {
-                    getAllTimetablesQuery =conn.prepareStatement("SELECT * from timetable t where t.user=?");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
+        }
 
-            try{
-                getUserByUsername =conn.prepareStatement("SELECT * from user where username=?");
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        } catch (SQLException e) {
+        try{
+            getUserByUsername =conn.prepareStatement("SELECT * from user where username=?");
+            addTimetableQuery=conn.prepareStatement("INSERT INTO timetable values (?,?,?)");
+        }catch (SQLException e){
             e.printStackTrace();
         }
     }
@@ -75,7 +74,7 @@ public class TimetableDAO {
         ResultSet rs = getAllTimetablesQuery.executeQuery();
         Timetables timetables=new Timetables();
         while(rs.next()){
-            Timetable timetable = new Timetable(rs.getString(1),null);
+            Timetable timetable = new Timetable(rs.getString(1),null,rs.getBoolean(3));
             User user = getUser(rs.getString(2));
             timetable.setUser(user);
             timetables.getTimetables().add(timetable);
@@ -92,4 +91,17 @@ public class TimetableDAO {
         }
         return user;
     }
+
+    public void addTimetable(Timetable timetable) throws SQLException {
+        addTimetableQuery.setString(1,timetable.getTimetableName());
+        addTimetableQuery.setString(2,timetable.getUser().getUsername());
+        if(timetable.isIncludeSaturday()) {
+            addTimetableQuery.setInt(3, 1);
+        }
+        else{
+            addTimetableQuery.setInt(3,0);
+        }
+        addTimetableQuery.executeUpdate();
+    }
+
 }

@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="14.0" layoutY="30.0" text="Timetable title: " textFill="#820000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="140.0" layoutY="27.0" prefHeight="26.0" prefWidth="174.0" />
+      <TextField fx:id="timetableTitle" layoutX="140.0" layoutY="27.0" prefHeight="26.0" prefWidth="174.0" />
       <Label layoutX="14.0" layoutY="68.0" text="Include saturday:" textFill="#820000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <CheckBox layoutX="140.0" layoutY="69.0" mnemonicParsing="false" />
-      <Button layoutX="227.0" layoutY="106.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="OK">
+      <CheckBox fx:id="cbSaturday" layoutX="140.0" layoutY="69.0" mnemonicParsing="false" />
+      <Button layoutX="227.0" layoutY="106.0" mnemonicParsing="false" onAction="#okAction" prefHeight="23.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="309.0" layoutY="106.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="CANCEL">
+      <Button layoutX="309.0" layoutY="106.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

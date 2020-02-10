@@ -25,7 +25,7 @@ public class StartPageController {
     public ArrayList<Subject> subjects = new ArrayList<>();
     public ObservableList<Subject> subjectNames = FXCollections.observableArrayList();
     public ObservableList<Timetable> allTimetables= FXCollections.observableArrayList();
-    private Timetables timetables=new Timetables();
+    private Timetables timetables;
 
     public String getUsername() {
         return username;
@@ -46,16 +46,16 @@ public class StartPageController {
 //        subjectNames.addAll(subjects);
 //        cbSubjects.setItems(subjectNames);
 
-        timetables=timetableDAO.getAllTimetablesForUser(username);
+        timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
         allTimetables.addAll(timetables.getTimetables());
         cbSubjects.setItems(allTimetables);
 
 
     }
 
-    private void setItemsInCheckBox() throws SQLException {
-        timetables=null;
-        timetables=timetableDAO.getAllTimetablesForUser(username);
+    private void setItemsInChoiceBox() throws SQLException {
+        timetables.getTimetables().removeAll(timetables.getTimetables());
+        timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
         allTimetables.addAll(timetables.getTimetables());
         cbSubjects.setItems(allTimetables);
     }
@@ -84,7 +84,6 @@ public class StartPageController {
                     User user = dao.getUser(username);
                     subject.setUser(user);
                     dao.addNewSubject(subject);
-                    setItemsInCheckBox();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -107,7 +106,6 @@ public class StartPageController {
             if(ctrl.getSubject()!=null){
                 try {
                     dao.removeSubject(ctrl.getSubject());
-                    setItemsInCheckBox();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -132,12 +130,34 @@ public class StartPageController {
                 Subject oldSubject = ctrl.getOldSubject();
                 try {
                     dao.editSubject(newSubject,oldSubject);
-                    setItemsInCheckBox();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         });
         editSubjecStage.show();
+    }
+
+    public void addNewTimetableAction(ActionEvent actionEvent) throws IOException {
+        Stage addNewTimetableStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addTimetable.fxml"));
+        AddTimetableController ctrl = new AddTimetableController(username,timetables);
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        addNewTimetableStage.setTitle("Add Timetable");
+        addNewTimetableStage.setScene(new Scene(root,390,140));
+        addNewTimetableStage.setOnHiding(event -> {
+            if(ctrl.getTimetable()!=null){
+                try {
+                    User user = dao.getUser(username);
+                    ctrl.getTimetable().setUser(user);
+                    timetableDAO.addTimetable(ctrl.getTimetable());
+                    setItemsInChoiceBox();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        addNewTimetableStage.show();
     }
 }
