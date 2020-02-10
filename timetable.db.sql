@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS "timetable" (
     "timetable_name" TEXT,
     "user" TEXT,
     "include_saturday" boolean,
-    PRIMARY KEY("timetable_name"),
+    PRIMARY KEY ("user","timetable_name"),
     FOREIGN KEY("user") REFERENCES "user"("username")
 );
 CREATE TABLE IF NOT EXISTS "timetable_field" (

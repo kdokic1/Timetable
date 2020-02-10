@@ -53,6 +53,11 @@ public class StartPageController {
 
     }
 
+    private void closeStage(){
+        Stage stage = (Stage) cbTimetables.getScene().getWindow();
+        stage.close();
+    }
+
     private void setItemsInChoiceBox() throws SQLException {
         timetables.getTimetables().removeAll(timetables.getTimetables());
         timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
@@ -182,4 +187,34 @@ public class StartPageController {
         });
         removeTimetableStage.show();
     }
+
+    public void openAction(ActionEvent actionEvent) throws IOException {
+        closeStage();
+
+        Stage timetableStage = new Stage();
+        FXMLLoader loader;
+        TimetableController ctrl;
+        if (cbTimetables.getValue() != null) {
+            if (cbTimetables.getValue().isIncludeSaturday()) {
+                loader = new FXMLLoader(getClass().getResource("/fxml/timetableWithSaturday.fxml"));
+                ctrl = new TimetableWithSaturdayController();
+            } else {
+                loader = new FXMLLoader(getClass().getResource("/fxml/timetable.fxml"));
+                ctrl = new TimetableController();
+            }
+
+            loader.setController(ctrl);
+            Parent root = loader.load();
+            timetableStage.setTitle("Timetable");
+
+            if (ctrl instanceof TimetableWithSaturdayController)
+                timetableStage.setScene(new Scene(root, 1130, 700));
+            else
+                timetableStage.setScene(new Scene(root, 965, 700));
+
+            timetableStage.show();
+
+        }
+    }
+
 }

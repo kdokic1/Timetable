@@ -83,7 +83,7 @@ public class LoginController extends Application {
                     startStage.setTitle("Timetable");
                     ctrl.setUsername(username);
                     ctrl.setUserLabelText(username);
-                    startStage.setScene(new Scene(root,570,440));
+                    startStage.setScene(new Scene(root,580,440));
                     startStage.show();
                 }
             }
