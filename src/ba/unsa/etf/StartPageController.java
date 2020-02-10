@@ -56,13 +56,14 @@ public class StartPageController {
     private void setItemsInChoiceBox() throws SQLException {
         timetables.getTimetables().removeAll(timetables.getTimetables());
         timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
+        allTimetables.removeAll(allTimetables);
         allTimetables.addAll(timetables.getTimetables());
         cbSubjects.setItems(allTimetables);
     }
 
     public StartPageController(String username) throws SQLException {
         this.username=username;
-        timetables=timetableDAO.getAllTimetablesForUser(username);
+        timetables=new Timetables(timetableDAO.getAllTimetablesForUser(username));
         subjects=dao.getAllSubjects(username);
     }
 
