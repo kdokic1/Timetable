@@ -197,10 +197,10 @@ public class StartPageController {
         if (cbTimetables.getValue() != null) {
             if (cbTimetables.getValue().isIncludeSaturday()) {
                 loader = new FXMLLoader(getClass().getResource("/fxml/timetableWithSaturday.fxml"));
-                ctrl = new TimetableWithSaturdayController();
+                ctrl = new TimetableWithSaturdayController(cbTimetables.getValue().getTimetableName(),username);
             } else {
                 loader = new FXMLLoader(getClass().getResource("/fxml/timetable.fxml"));
-                ctrl = new TimetableController();
+                ctrl = new TimetableController(cbTimetables.getValue().getTimetableName(),username);
             }
 
             loader.setController(ctrl);
