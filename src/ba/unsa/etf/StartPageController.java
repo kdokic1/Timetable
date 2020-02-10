@@ -21,7 +21,7 @@ public class StartPageController {
     public TimetableDAO timetableDAO = TimetableDAO.getInstance();
     public Label userLabel = new Label();
     public String username = new String();
-    public ChoiceBox<Timetable> cbSubjects = new ChoiceBox<>();
+    public ChoiceBox<Timetable> cbTimetables = new ChoiceBox<>();
     public ArrayList<Subject> subjects = new ArrayList<>();
     public ObservableList<Subject> subjectNames = FXCollections.observableArrayList();
     public ObservableList<Timetable> allTimetables= FXCollections.observableArrayList();
@@ -48,7 +48,7 @@ public class StartPageController {
 
         timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
         allTimetables.addAll(timetables.getTimetables());
-        cbSubjects.setItems(allTimetables);
+        cbTimetables.setItems(allTimetables);
 
 
     }
@@ -58,7 +58,7 @@ public class StartPageController {
         timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
         allTimetables.removeAll(allTimetables);
         allTimetables.addAll(timetables.getTimetables());
-        cbSubjects.setItems(allTimetables);
+        cbTimetables.setItems(allTimetables);
     }
 
     public StartPageController(String username) throws SQLException {
@@ -162,7 +162,24 @@ public class StartPageController {
         addNewTimetableStage.show();
     }
 
-    public void removeTimetableAction(ActionEvent actionEvent){
-
+    public void removeTimetableAction(ActionEvent actionEvent) throws IOException {
+        Stage removeTimetableStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/removeTimetable.fxml"));
+        RemoveTimetableController ctrl = new RemoveTimetableController(username,timetables);
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        removeTimetableStage.setTitle("Remove Timetable");
+        removeTimetableStage.setScene(new Scene(root,390,180));
+        removeTimetableStage.setOnHiding(event -> {
+            if(ctrl.getTimetableForRemove()!=null){
+                try {
+                    timetableDAO.deleteTimetable(ctrl.getTimetableForRemove());
+                    setItemsInChoiceBox();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        removeTimetableStage.show();
     }
 }

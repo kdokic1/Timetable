@@ -79,7 +79,7 @@
                   <Image url="@../../../../AppData/Local/Temp/icons8_edit_file_24px_1.png" />
                </image>
             </ImageView>
-            <ChoiceBox fx:id="cbSubjects" layoutX="295.0" layoutY="214.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cbTimetables" layoutX="295.0" layoutY="214.0" prefWidth="150.0" />
             </children>
         </AnchorPane>
     </children>
