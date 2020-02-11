@@ -196,6 +196,15 @@ public class TimetableController {
             });
             addFieldStage.show();
         }
-
+        else{
+            Stage moreInfoStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/moreInformation.fxml"));
+            MoreInformationController ctrl = new MoreInformationController(timetable,nameOfTheDay,ordinalNum,username);
+            loader.setController(ctrl);
+            Parent root = loader.load();
+            moreInfoStage.setTitle("More infromation");
+            moreInfoStage.setScene(new Scene(root,420,310));
+            moreInfoStage.show();
+        }
     }
 }

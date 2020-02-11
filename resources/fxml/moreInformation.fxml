@@ -31,25 +31,25 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="182.0" layoutY="46.0" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 100PX;" />
-      <TextField editable="false" layoutX="182.0" layoutY="85.0" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 100PX;" />
-      <TextField editable="false" layoutX="182.0" layoutY="126.0" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 100PX;" />
-      <Label layoutX="241.0" layoutY="181.0" prefHeight="18.0" prefWidth="38.0" text="11:00" underline="true" AnchorPane.topAnchor="179.0">
+      <TextField fx:id="subjectName" editable="false" focusTraversable="false" layoutX="182.0" layoutY="46.0" pickOnBounds="false" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 100PX;" />
+      <TextField fx:id="teacherFld" editable="false" focusTraversable="false" layoutX="182.0" layoutY="85.0" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 100PX;" />
+      <TextField fx:id="classroomFld" editable="false" focusTraversable="false" layoutX="182.0" layoutY="126.0" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 100PX;" />
+      <Label fx:id="startLabel" layoutX="241.0" layoutY="181.0" prefHeight="18.0" prefWidth="38.0" text="11:00" underline="true" AnchorPane.topAnchor="179.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="345.0" layoutY="181.0" prefHeight="18.0" prefWidth="38.0" text="11:00" underline="true" AnchorPane.topAnchor="179.0">
+      <Label fx:id="endLabel" layoutX="345.0" layoutY="181.0" prefHeight="18.0" prefWidth="38.0" text="11:00" underline="true" AnchorPane.topAnchor="179.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="264.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 100PX;" text="OK">
+      <Button layoutX="264.0" layoutY="268.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="264.0" layoutY="229.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 100PX;" text="REMOVE FIELD">
+      <Button layoutX="264.0" layoutY="229.0" mnemonicParsing="false" onAction="#removeFieldAction" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 100PX;" text="REMOVE FIELD">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
