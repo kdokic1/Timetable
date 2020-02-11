@@ -21,6 +21,8 @@ public class TimetableField {
         this.ends=new TimeClass(ends);
     }
 
+    public TimetableField(){}
+
 
     public User getUser() {
         return user;

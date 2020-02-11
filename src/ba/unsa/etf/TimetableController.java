@@ -29,18 +29,23 @@ public class TimetableController {
         switch (nameOfTheDay){
             case "MON":
                 day=Day.MON;
+                day.setDay(Day.MON);
                 break;
             case "TUE":
                 day=Day.TUE;
+                day.setDay(Day.TUE);
                 break;
             case "WED":
                 day=Day.WED;
+                day.setDay(Day.WED);
                 break;
             case "THU":
                 day=Day.THU;
+                day.setDay(Day.THU);
                 break;
             case "FRI":
                 day=Day.FRI;
+                day.setDay(Day.FRI);
                 break;
         }
         if(btn.getText().equals("")){

@@ -6,5 +6,15 @@ public enum Day {
     WED,
     THU,
     FRI,
-    SAT
+    SAT;
+
+    private Day temp;
+
+    public Day getDay(){
+        return temp;
+    }
+
+    public void setDay(Day d){
+        temp=d;
+    }
 }
