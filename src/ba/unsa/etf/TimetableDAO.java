@@ -15,7 +15,7 @@ public class TimetableDAO {
         return conn;
     }
 
-    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery, getFieldsQuery,addFieldQuery,removeFieldQuery;
+    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery, getFieldsQuery,addFieldQuery,removeFieldQuery, editFieldQuery, deleteFieldsQuery, deleteFieldsAfterSubjectQuery;
 
     public static TimetableDAO getInstance() {
         if (instance == null) instance = new TimetableDAO(); //samo jedna instanca baze, da bi postojao samo jedan ulaz
@@ -45,6 +45,9 @@ public class TimetableDAO {
             getFieldsQuery=conn.prepareStatement("SELECT * from timetable_field t where t.timetable=?");
             addFieldQuery=conn.prepareStatement("INSERT INTO timetable_field values(?,?,?,?,?,?,?,?,?)");
             removeFieldQuery=conn.prepareStatement("DELETE from timetable_field where username=? and timetable=? and ordinal_number=? and timetable_day=?");
+            editFieldQuery=conn.prepareStatement("UPDATE timetable_field SET subject=? where username=? and subject=?");
+            deleteFieldsQuery=conn.prepareStatement("DELETE from timetable_field where timetable=? and username=?");
+            deleteFieldsAfterSubjectQuery=conn.prepareStatement("DELETE from timetable_field where subject=? and username=?");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -169,9 +172,32 @@ public class TimetableDAO {
                 return Day.TUE;
             case "WED":
                 return Day.WED;
-            default:
+            case "THU":
                 return Day.THU;
+            case "FRI":
+                return Day.FRI;
+            default:
+                return Day.SAT;
         }
+    }
+
+    public void editField(Subject oldSubject, Subject newSubject) throws SQLException {
+        editFieldQuery.setString(1,newSubject.getSubjectName());
+        editFieldQuery.setString(2,newSubject.getUser().getUsername());
+        editFieldQuery.setString(3,oldSubject.getSubjectName());
+        editFieldQuery.executeUpdate();
+    }
+
+    public void deleteFieldAfterTimetable(String timetable, String username) throws SQLException {
+        deleteFieldsQuery.setString(1,timetable);
+        deleteFieldsQuery.setString(2,username);
+        deleteFieldsQuery.executeUpdate();
+    }
+
+    public void deleteFieldAfterSubject(String subject, String username) throws SQLException {
+        deleteFieldsAfterSubjectQuery.setString(1,subject);
+        deleteFieldsAfterSubjectQuery.setString(2,username);
+        deleteFieldsAfterSubjectQuery.executeUpdate();
     }
 
 }

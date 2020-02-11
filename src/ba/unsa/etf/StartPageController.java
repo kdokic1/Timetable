@@ -112,6 +112,7 @@ public class StartPageController {
             if(ctrl.getSubject()!=null){
                 try {
                     dao.removeSubject(ctrl.getSubject());
+                    timetableDAO.deleteFieldAfterSubject(ctrl.getSubject().getSubjectName(),username);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -136,6 +137,7 @@ public class StartPageController {
                 Subject oldSubject = ctrl.getOldSubject();
                 try {
                     dao.editSubject(newSubject,oldSubject);
+                    timetableDAO.editField(oldSubject,newSubject);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -179,6 +181,7 @@ public class StartPageController {
             if(ctrl.getTimetableForRemove()!=null){
                 try {
                     timetableDAO.deleteTimetable(ctrl.getTimetableForRemove());
+                    timetableDAO.deleteFieldAfterTimetable(ctrl.getTimetableForRemove().getTimetableName(),username);
                     setItemsInChoiceBox();
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -193,24 +196,22 @@ public class StartPageController {
 
         Stage timetableStage = new Stage();
         FXMLLoader loader;
-        TimetableController ctrl;
         if (cbTimetables.getValue() != null) {
             if (cbTimetables.getValue().isIncludeSaturday()) {
                 loader = new FXMLLoader(getClass().getResource("/fxml/timetableWithSaturday.fxml"));
-                ctrl = new TimetableWithSaturdayController(cbTimetables.getValue(),username);
+                TimetableWithSaturdayController ctrl = new TimetableWithSaturdayController(cbTimetables.getValue(),username);
+                loader.setController(ctrl);
+                Parent root = loader.load();
+                timetableStage.setTitle("Timetable");
+                timetableStage.setScene(new Scene(root,1130,700));
             } else {
                 loader = new FXMLLoader(getClass().getResource("/fxml/timetable.fxml"));
-                ctrl = new TimetableController(cbTimetables.getValue(),username);
+                TimetableController ctrl = new TimetableController(cbTimetables.getValue(),username);
+                loader.setController(ctrl);
+                Parent root = loader.load();
+                timetableStage.setTitle("Timetable");
+                timetableStage.setScene(new Scene(root,965,700));
             }
-
-            loader.setController(ctrl);
-            Parent root = loader.load();
-            timetableStage.setTitle("Timetable");
-
-            if (ctrl instanceof TimetableWithSaturdayController)
-                timetableStage.setScene(new Scene(root, 1130, 700));
-            else
-                timetableStage.setScene(new Scene(root, 965, 700));
 
             timetableStage.show();
 

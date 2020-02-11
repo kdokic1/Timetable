@@ -5,7 +5,8 @@ public enum Day {
     TUE,
     WED,
     THU,
-    FRI;
+    FRI,
+    SAT;
     @Override
     public String toString() {
         if(this==Day.MON)
@@ -16,7 +17,9 @@ public enum Day {
             return "WED";
         else if(this==Day.THU)
             return "THU";
-        else
+        else if(this==Day.FRI)
             return "FRI";
+        else
+            return "SAT";
     }
 }

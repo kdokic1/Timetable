@@ -17,13 +17,13 @@ public class TimetableController {
     protected String timetableName=new String();
     protected String username = new String();
     public Label timetableNameLabel=new Label();
-    private SubjectDAO subjectDAO=SubjectDAO.getInstance();
-    private TimetableDAO timetableDAO=TimetableDAO.getInstance();
-    private Timetable timetable;
-    private ArrayList<Button> buttons=new ArrayList<>();
+    protected SubjectDAO subjectDAO=SubjectDAO.getInstance();
+    protected TimetableDAO timetableDAO=TimetableDAO.getInstance();
+    protected Timetable timetable;
+    protected ArrayList<Button> buttons=new ArrayList<>();
 
     public Button MON1,MON2,MON3,MON4,MON5,MON6,MON7,TUE1,TUE2,TUE3,TUE4,TUE5,TUE6,TUE7,WED1,WED2,WED3,WED4,WED5,WED6,WED7,
-                    THU1,THU2,THU3,THU4,THU5,THU6,THU7,FRI1,FRI2,FRI3,FRI4,FRI5,FRI6,FRI7;
+                    THU1,THU2,THU3,THU4,THU5,THU6,THU7,FRI1,FRI2,FRI3,FRI4,FRI5,FRI6,FRI7,SAT1,SAT2,SAT3,SAT4,SAT5,SAT6,SAT7;
 
 
     public TimetableController(Timetable timetable, String username){
@@ -146,6 +146,27 @@ public class TimetableController {
                     case "FRI7":
                         FRI7.setText(t.getSubject().getSubjectName());
                         break;
+                    case "SAT1":
+                        SAT1.setText(t.getSubject().getSubjectName());
+                        break;
+                    case "SAT2":
+                        SAT2.setText(t.getSubject().getSubjectName());
+                        break;
+                    case "SAT3":
+                        SAT3.setText(t.getSubject().getSubjectName());
+                        break;
+                    case "SAT4":
+                        SAT4.setText(t.getSubject().getSubjectName());
+                        break;
+                    case "SAT5":
+                        SAT5.setText(t.getSubject().getSubjectName());
+                        break;
+                    case "SAT6":
+                        SAT6.setText(t.getSubject().getSubjectName());
+                        break;
+                    case "SAT7":
+                        SAT7.setText(t.getSubject().getSubjectName());
+                        break;
                 }
             }
         }
@@ -173,6 +194,8 @@ public class TimetableController {
             case "FRI":
                 day=Day.FRI;
                 break;
+            case "SAT":
+                day=Day.SAT;
         }
         if(btn.getText().equals("")){
             Stage addFieldStage = new Stage();
