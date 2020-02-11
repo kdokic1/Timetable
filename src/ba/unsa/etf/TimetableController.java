@@ -20,12 +20,12 @@ public class TimetableController {
         this.username=username;
     }
 
-    public void moreInfoAction(ActionEvent actionEvent) throws IOException {
+    public void moreInfoAction(ActionEvent actionEvent) throws IOException, SQLException {
         Button btn = (Button) actionEvent.getSource();
         String id = btn.getId();
         String nameOfTheDay= id.substring(0,3);
         int ordinalNum = Integer.parseInt(id.substring(3));
-        Day day;
+        Day day=Day.MON;
         switch (nameOfTheDay){
             case "MON":
                 day=Day.MON;
@@ -46,13 +46,15 @@ public class TimetableController {
         if(btn.getText().equals("")){
             Stage addFieldStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addFieldInTimetable.fxml"));
-            AddFieldInTimetableController ctrl = new AddFieldInTimetableController();
+            AddFieldInTimetableController ctrl = new AddFieldInTimetableController(subjectDAO.getAllSubjects(username),day,ordinalNum);
             loader.setController(ctrl);
             Parent root = loader.load();
             addFieldStage.setTitle("Add Field");
             addFieldStage.setScene(new Scene(root,320,180));
             addFieldStage.setOnHiding(event -> {
-
+                if(ctrl.getTimetableField()!=null){
+                    btn.setText(ctrl.getTimetableField().getSubject().getSubjectName());
+                }
             });
             addFieldStage.show();
         }
