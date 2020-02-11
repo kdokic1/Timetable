@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS "timetable_field" (
     "starts_minute" integer,
     "ends_hour" integer,
     "ends_minute" integer,
-    PRIMARY KEY ("timetable","user","ordinal_number","day"),
     FOREIGN KEY ("timetable") REFERENCES "timetable"("timetable_name"),
     FOREIGN KEY ("user") REFERENCES "user"("username"),
     FOREIGN KEY ("subject") REFERENCES "subject"("subject_name")
@@ -40,5 +39,6 @@ CREATE TABLE IF NOT EXISTS "timetable_field" (
 INSERT INTO "user" VALUES ('kdokic1','Kanita','Đokić','kdokic1@etf.unsa.ba','Uquahlahying18523');
 INSERT INTO "subject" VALUES ('math','kdokic1','Muslija Omerović','classroom');
 INSERT INTO "timetable" VALUES ('novi','kdokic1','0');
-INSERT INTO "timetable_field" VALUES ('novi','kdokic1','mon','2','math','11','00','12','00');
+INSERT INTO "timetable_field" VALUES ('novi','kdokic1','MON','2','math','11','00','12','00');
+INSERT INTO "timetable_field" VALUES ('novi','kdokic1','TUE','3','math','11','00','12','00');
 COMMIT;

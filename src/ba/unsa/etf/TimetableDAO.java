@@ -3,17 +3,19 @@ package ba.unsa.etf;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TimetableDAO {
     private static TimetableDAO instance = null;
     private static Connection conn;
+    private SubjectDAO subjectDAO=SubjectDAO.getInstance();
 
     public static Connection getConn() {
         return conn;
     }
 
-    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery;
+    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery, getFieldsQuery,addFieldQuery;
 
     public static TimetableDAO getInstance() {
         if (instance == null) instance = new TimetableDAO(); //samo jedna instanca baze, da bi postojao samo jedan ulaz
@@ -40,6 +42,8 @@ public class TimetableDAO {
             getUserByUsername =conn.prepareStatement("SELECT * from user where username=?");
             addTimetableQuery=conn.prepareStatement("INSERT INTO timetable values (?,?,?)");
             deleteTimetableQuery=conn.prepareStatement("DELETE from timetable where timetable_name=?");
+            getFieldsQuery=conn.prepareStatement("SELECT * from timetable_field t where t.timetable=?");
+            addFieldQuery=conn.prepareStatement("INSERT INTO timetable_field values(?,?,?,?,?,?,?,?,?)");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -103,6 +107,62 @@ public class TimetableDAO {
     public void deleteTimetable(Timetable timetable) throws SQLException {
         deleteTimetableQuery.setString(1,timetable.getTimetableName());
         deleteTimetableQuery.executeUpdate();
+    }
+    public ArrayList<TimetableField> getFields(Timetable timetable) throws SQLException {
+        ArrayList<TimetableField> timetableFields=new ArrayList<>();
+        getFieldsQuery.setString(1,timetable.getTimetableName());
+
+        ResultSet rs = getFieldsQuery.executeQuery();
+       //(User user, Timetable timetable, Subject subject, TimeClass starts,TimeClass ends, Day day, int ordinalNumber) {
+        while(rs.next()){
+            TimetableField timetableField=new TimetableField();
+            ArrayList<Subject> subjects=new ArrayList<>();
+            subjects=subjectDAO.getAllSubjects(rs.getString(2));
+            User user = subjectDAO.getUser(rs.getString(2));
+            Subject newSubject=new Subject();
+
+            for(Subject s: subjects){
+                if(s.getSubjectName().equals(rs.getString(5))){
+                    newSubject=s;
+                    break;
+                }
+            }
+            TimeClass starts = new TimeClass(rs.getInt(6),rs.getInt(7));
+            TimeClass ends = new TimeClass(rs.getInt(8),rs.getInt(9));
+            Day day = getDayByString(rs.getString(3));
+
+            timetableField = new TimetableField(user,timetable,newSubject,starts,ends,day,rs.getInt(4));
+
+            timetableFields.add(timetableField);
+
+        }
+        return timetableFields;
+    }
+
+    public void addField(TimetableField timetableField) throws SQLException {
+        addFieldQuery.setString(1,timetableField.getTimetable().getTimetableName());
+        addFieldQuery.setString(2,timetableField.getUser().getUsername());
+        addFieldQuery.setString(3,timetableField.getDay().toString());
+        addFieldQuery.setInt(4,timetableField.getOrdinalNumber());
+        addFieldQuery.setString(5,timetableField.getSubject().getSubjectName());
+        addFieldQuery.setInt(6,timetableField.getStarts().getHours());
+        addFieldQuery.setInt(7,timetableField.getStarts().getMinutes());
+        addFieldQuery.setInt(8,timetableField.getEnds().getHours());
+        addFieldQuery.setInt(9,timetableField.getEnds().getMinutes());
+        addFieldQuery.executeUpdate();
+    }
+
+    private Day getDayByString(String day){
+        switch (day) {
+            case "MON":
+                return Day.MON;
+            case "TUE":
+                return Day.TUE;
+            case "WED":
+                return Day.WED;
+            default:
+                return Day.THU;
+        }
     }
 
 }

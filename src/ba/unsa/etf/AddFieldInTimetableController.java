@@ -7,10 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Stage;
-
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class AddFieldInTimetableController {
     public Spinner<Integer> spinnerHours = new Spinner<>();

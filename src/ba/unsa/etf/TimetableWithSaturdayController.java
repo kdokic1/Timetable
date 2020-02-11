@@ -1,7 +1,7 @@
 package ba.unsa.etf;
 
 public class TimetableWithSaturdayController extends TimetableController{
-    public TimetableWithSaturdayController(String timetableName, String username) {
-        super(timetableName, username);
+    public TimetableWithSaturdayController(Timetable timetable, String username) {
+        super(timetable, username);
     }
 }

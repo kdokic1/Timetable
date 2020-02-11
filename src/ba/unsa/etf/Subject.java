@@ -13,6 +13,8 @@ public class Subject {
         this.user = user;
     }
 
+    public Subject (){}
+
     public String getSubjectName() {
         return subjectName;
     }
