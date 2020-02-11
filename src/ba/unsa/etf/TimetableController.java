@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class TimetableController {
     protected String timetableName=new String();
     protected String username = new String();
+    public Label timetableNameLabel=new Label();
     private SubjectDAO subjectDAO=SubjectDAO.getInstance();
     private TimetableDAO timetableDAO=TimetableDAO.getInstance();
     private Timetable timetable;
@@ -31,6 +33,7 @@ public class TimetableController {
     }
 
     public void initialize() throws SQLException {
+        timetableNameLabel.setText(timetableName.toUpperCase());
         ArrayList<TimetableField> timetableFields=timetableDAO.getFields(timetable);
         for(TimetableField t : timetableFields){
             if(t.getUser().getUsername().equals(username)) {
@@ -204,6 +207,11 @@ public class TimetableController {
             Parent root = loader.load();
             moreInfoStage.setTitle("More infromation");
             moreInfoStage.setScene(new Scene(root,420,310));
+            moreInfoStage.setOnHiding(event -> {
+                if(ctrl.isDeleted()){
+                    btn.setText("");
+                }
+            });
             moreInfoStage.show();
         }
     }

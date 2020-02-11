@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS "subject" (
 	"user"	TEXT,
 	"teacher"	TEXT,
 	"classroom"	TEXT,
-	PRIMARY KEY("subject_name"),
+	PRIMARY KEY("subject_name","user"),
 	FOREIGN KEY("user") REFERENCES "user"("username")
 );
 CREATE TABLE IF NOT EXISTS "user" (
@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS "timetable" (
 );
 CREATE TABLE IF NOT EXISTS "timetable_field" (
     "timetable" TEXT,
-    "user" TEXT,
-    "day" TEXT,
+    "username" TEXT,
+    "timetable_day" TEXT,
     "ordinal_number" INTEGER,
     "subject" TEXT,
     "starts_hour" integer,
@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS "timetable_field" (
     "ends_hour" integer,
     "ends_minute" integer,
     FOREIGN KEY ("timetable") REFERENCES "timetable"("timetable_name"),
-    FOREIGN KEY ("user") REFERENCES "user"("username"),
     FOREIGN KEY ("subject") REFERENCES "subject"("subject_name")
 );
 INSERT INTO "user" VALUES ('kdokic1','Kanita','Đokić','kdokic1@etf.unsa.ba','Uquahlahying18523');

@@ -1,8 +1,10 @@
 package ba.unsa.etf;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +22,9 @@ public class MoreInformationController {
     private int ordinalNum;
     private String username;
     private TimetableField tempField;
+    private boolean deleted=false;
+
+    public boolean isDeleted(){return deleted;}
 
 
     public MoreInformationController(Timetable timetable, String day, int ordinalNum, String username) throws SQLException {
@@ -61,11 +66,15 @@ public class MoreInformationController {
 
     }
 
-    public void removeFieldAction(ActionEvent actionEvent){
-
+    public void removeFieldAction(ActionEvent actionEvent) throws SQLException {
+        timetableDAO.removeField(tempField);
+        deleted=true;
+        Stage stage = (Stage) classroomFld.getScene().getWindow();
+        stage.close();
     }
 
     public void okAction(ActionEvent actionEvent){
-
+        Stage stage = (Stage) classroomFld.getScene().getWindow();
+        stage.close();
     }
 }

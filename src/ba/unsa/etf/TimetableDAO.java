@@ -15,7 +15,7 @@ public class TimetableDAO {
         return conn;
     }
 
-    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery, getFieldsQuery,addFieldQuery;
+    private PreparedStatement getAllTimetablesQuery, getUserByUsername, addTimetableQuery, deleteTimetableQuery, getFieldsQuery,addFieldQuery,removeFieldQuery;
 
     public static TimetableDAO getInstance() {
         if (instance == null) instance = new TimetableDAO(); //samo jedna instanca baze, da bi postojao samo jedan ulaz
@@ -44,6 +44,7 @@ public class TimetableDAO {
             deleteTimetableQuery=conn.prepareStatement("DELETE from timetable where timetable_name=?");
             getFieldsQuery=conn.prepareStatement("SELECT * from timetable_field t where t.timetable=?");
             addFieldQuery=conn.prepareStatement("INSERT INTO timetable_field values(?,?,?,?,?,?,?,?,?)");
+            removeFieldQuery=conn.prepareStatement("DELETE from timetable_field where username=? and timetable=? and ordinal_number=? and timetable_day=?");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -150,6 +151,14 @@ public class TimetableDAO {
         addFieldQuery.setInt(8,timetableField.getEnds().getHours());
         addFieldQuery.setInt(9,timetableField.getEnds().getMinutes());
         addFieldQuery.executeUpdate();
+    }
+
+    public void removeField(TimetableField timetableField) throws SQLException {
+        removeFieldQuery.setString(1,timetableField.getUser().getUsername());
+        removeFieldQuery.setString(2,timetableField.getTimetable().getTimetableName());
+        removeFieldQuery.setInt(3,timetableField.getOrdinalNumber());
+        removeFieldQuery.setString(4,timetableField.getDay().toString());
+        removeFieldQuery.executeUpdate();
     }
 
     private Day getDayByString(String day){
