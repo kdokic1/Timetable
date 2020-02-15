@@ -54,74 +54,77 @@ public class SignUpController {
         signupStage.show();
     }
 
-    public void signUpAction(ActionEvent actionEvent) throws IOException {
-        fldUsername.getStyleClass().remove("myborderregion");
-        fldLastName.getStyleClass().remove("myborderregion");
-        fldFirstName.getStyleClass().remove("myborderregion");
-        fldEmail.getStyleClass().remove("myborderregion");
-        fldPass.getStyleClass().remove("myborderregion");
+    public void signUpAction(ActionEvent actionEvent) throws IOException, IncorrectInformationException {
+        try {
+            fldUsername.getStyleClass().remove("myborderregion");
+            fldLastName.getStyleClass().remove("myborderregion");
+            fldFirstName.getStyleClass().remove("myborderregion");
+            fldEmail.getStyleClass().remove("myborderregion");
+            fldPass.getStyleClass().remove("myborderregion");
 
-        if(!errorLabel.getText().isEmpty())
-            errorLabel.setText("");
+            if (!errorLabel.getText().isEmpty())
+                errorLabel.setText("");
 
-        ArrayList<User> users = new ArrayList<>();
-        users=dao.getAllUsers();
+            ArrayList<User> users = new ArrayList<>();
+            users = dao.getAllUsers();
 
-        String errorText = "";
+            String errorText = "";
 
-        if(fldUsername.getText().isEmpty() || fldFirstName.getText().isEmpty() || fldLastName.getText().isEmpty() || fldEmail.getText().isEmpty() || fldPass.getText().isEmpty()){
-            errorText=errorText+"*You did not enter all fields\n";
-        }
+            if (fldUsername.getText().isEmpty() || fldFirstName.getText().isEmpty() || fldLastName.getText().isEmpty() || fldEmail.getText().isEmpty() || fldPass.getText().isEmpty()) {
+                errorText = errorText + "*You did not enter all fields\n";
+            }
 
-        if(fldUsername.getText().isEmpty()){
-            fldUsername.getStyleClass().add("myborderregion");
-        }
+            if (fldUsername.getText().isEmpty()) {
+                fldUsername.getStyleClass().add("myborderregion");
+            }
 
-        if(fldFirstName.getText().isEmpty()){
-            fldFirstName.getStyleClass().add("myborderregion");
-        }
+            if (fldFirstName.getText().isEmpty()) {
+                fldFirstName.getStyleClass().add("myborderregion");
+            }
 
-        if(fldLastName.getText().isEmpty()){
-            fldLastName.getStyleClass().add("myborderregion");
-        }
+            if (fldLastName.getText().isEmpty()) {
+                fldLastName.getStyleClass().add("myborderregion");
+            }
 
-        if(fldEmail.getText().isEmpty()){
-            fldEmail.getStyleClass().add("myborderregion");
-        }
+            if (fldEmail.getText().isEmpty()) {
+                fldEmail.getStyleClass().add("myborderregion");
+            }
 
-        if(fldPass.getText().isEmpty()){
-            fldPass.getStyleClass().add("myborderregion");
-        }
+            if (fldPass.getText().isEmpty()) {
+                fldPass.getStyleClass().add("myborderregion");
+            }
 
-        if(!errorText.equals("")){
-            errorLabel.setText(errorText);
-            return;
-        }
+            if (!errorText.equals(""))
+                throw new IncorrectInformationException(errorText);
+
             for (User u : users) {
                 if (u.getUsername().equals(fldUsername.getText())) {
                     fldUsername.getStyleClass().add("myborderregion");
-                    errorText=errorText+"*This username is already used\n";
+                    errorText = errorText + "*This username is already used\n";
                 }
             }
 
-        if(!validEmail(fldEmail.getText())){
-            fldEmail.getStyleClass().add("myborderregion");
-            errorText=errorText+"*Incorrect e-mail\n";
+            if (!validEmail(fldEmail.getText())) {
+                fldEmail.getStyleClass().add("myborderregion");
+                errorText = errorText + "*Incorrect e-mail\n";
+            }
+
+            if (!validPass(fldPass.getText())) {
+                fldPass.getStyleClass().add("myborderregion");
+                errorText = errorText + "*Password should contains\nat least 8 characters,\none number and one capital letter";
+            }
+
+            //errorLabel.setText(errorText);
+            if (!errorText.equals(""))
+                throw new IncorrectInformationException(errorText);
+
+            User user = new User(fldFirstName.getText(), fldLastName.getText(), fldEmail.getText(), fldUsername.getText(), fldPass.getText());
+
+            dao.addUser(user);
+            signInFun();
+        }catch (Exception e){
+            errorLabel.setText(e.getMessage());
         }
-
-        if(!validPass(fldPass.getText())){
-            fldPass.getStyleClass().add("myborderregion");
-            errorText=errorText+"*Password should contains\nat least 8 characters,\none number and one capital letter";
-        }
-
-        errorLabel.setText(errorText);
-        if(!errorText.equals(""))
-            return;
-
-        User user = new User(fldFirstName.getText(),fldLastName.getText(),fldEmail.getText(),fldUsername.getText(),fldPass.getText());
-
-        dao.addUser(user);
-        signInFun();
     }
 
     private boolean validEmail(String emailToCheck){
