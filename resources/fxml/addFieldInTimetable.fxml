@@ -7,12 +7,12 @@
 <AnchorPane prefHeight="197.0" prefWidth="382.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ChoiceBox fx:id="cbSubjects" layoutX="141.0" layoutY="27.0" prefHeight="26.0" prefWidth="162.0" style="-fx-background-radius: 100PX;" />
-      <Label layoutX="26.0" layoutY="30.0" text="Choose subject:" textFill="#870000">
+      <Label layoutX="26.0" layoutY="30.0" text="%chooseSubject" textFill="#870000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="92.0" text="Starts:" textFill="#870000">
+      <Label layoutX="26.0" layoutY="92.0" text="%starts" textFill="#870000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -29,7 +29,7 @@
          </font>
       </Button>
       <Spinner fx:id="spinnerMinutes" layoutX="206.0" layoutY="89.0" prefHeight="26.0" prefWidth="66.0" />
-      <Label layoutX="147.0" layoutY="71.0" text="hours" />
-      <Label layoutX="207.0" layoutY="71.0" text="minutes" />
+      <Label layoutX="147.0" layoutY="71.0" text="%hours" />
+      <Label layoutX="207.0" layoutY="71.0" text="%minutes" />
    </children>
 </AnchorPane>

@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane layoutX="1.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="499.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="24.0" layoutY="228.0" prefHeight="44.0" prefWidth="175.0" text="&quot;For every minute spent" textAlignment="CENTER">
+                <Label layoutX="24.0" layoutY="228.0" prefHeight="44.0" prefWidth="175.0" text="%firstPart" textAlignment="CENTER">
                     <font>
                         <Font name="System Italic" size="16.0" />
                     </font>
@@ -25,7 +19,7 @@
             </children></AnchorPane>
         <AnchorPane layoutX="368.0" layoutY="29.0" prefHeight="426.0" prefWidth="282.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="368.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="29.0">
             <children>
-                <Label layoutX="69.0" layoutY="14.0" prefHeight="54.0" prefWidth="148.0" text="Sign up" textFill="WHITE">
+                <Label layoutX="69.0" layoutY="14.0" prefHeight="54.0" prefWidth="148.0" text="%SIGNUPSTART" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="35.0" />
                     </font>
@@ -33,25 +27,25 @@
                         <Glow level="0.52" />
                     </effect>
                 </Label>
-                <TextField fx:id="fldFirstName" focusTraversable="false" layoutX="32.0" layoutY="85.0" prefHeight="26.0" prefWidth="222.0" promptText="first name" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css">
+                <TextField fx:id="fldFirstName" focusTraversable="false" layoutX="32.0" layoutY="85.0" prefHeight="26.0" prefWidth="222.0" promptText="%firstname" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css">
                     <font>
                         <Font name="System Italic" size="12.0" />
                     </font>
                 </TextField>
-            <TextField fx:id="fldLastName" focusTraversable="false" layoutX="33.0" layoutY="123.0" prefHeight="26.0" prefWidth="222.0" promptText="last name" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css" />
-            <TextField fx:id="fldEmail" focusTraversable="false" layoutX="33.0" layoutY="162.0" prefHeight="26.0" prefWidth="222.0" promptText="e-mail" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css" />
-            <TextField fx:id="fldUsername" focusTraversable="false" layoutX="33.0" layoutY="199.0" prefHeight="26.0" prefWidth="222.0" promptText="username" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css" />
-                <PasswordField fx:id="fldPass" focusTraversable="false" layoutX="32.0" layoutY="235.0" prefHeight="26.0" prefWidth="222.0" promptText="password" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css">
+            <TextField fx:id="fldLastName" focusTraversable="false" layoutX="33.0" layoutY="123.0" prefHeight="26.0" prefWidth="222.0" promptText="%lastname" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css" />
+            <TextField fx:id="fldEmail" focusTraversable="false" layoutX="33.0" layoutY="162.0" prefHeight="26.0" prefWidth="222.0" promptText="%email" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css" />
+            <TextField fx:id="fldUsername" focusTraversable="false" layoutX="33.0" layoutY="199.0" prefHeight="26.0" prefWidth="222.0" promptText="%username" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css" />
+                <PasswordField fx:id="fldPass" focusTraversable="false" layoutX="32.0" layoutY="235.0" prefHeight="26.0" prefWidth="222.0" promptText="%password" style="-fx-background-radius: 100PX;" stylesheets="@../css/colors.css">
                     <font>
                         <Font name="System Italic" size="12.0" />
                     </font>
                 </PasswordField>
-                <Button fx:id="btnSignUp" defaultButton="true" layoutX="67.0" layoutY="276.0" mnemonicParsing="false" onAction="#signUpAction" prefHeight="18.0" prefWidth="148.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="sign up" textAlignment="CENTER">
+                <Button fx:id="btnSignUp" defaultButton="true" layoutX="67.0" layoutY="276.0" mnemonicParsing="false" onAction="#signUpAction" prefHeight="18.0" prefWidth="148.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="%signupButton" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Label layoutX="37.0" layoutY="444.0" text="Already have an account?" textFill="WHITE" />
+                <Label layoutX="37.0" layoutY="444.0" text="%alreadyHaveAcc" textFill="WHITE" />
             <ImageView fitHeight="18.0" fitWidth="16.0" layoutX="230.0" layoutY="239.0">
                <effect>
                   <ColorAdjust brightness="0.48" />
@@ -93,7 +87,7 @@
                </image>
             </ImageView>
             <Label fx:id="errorLabel" layoutX="37.0" layoutY="302.0" prefHeight="126.0" prefWidth="211.0" textFill="#ffee00" />
-                <Label layoutX="184.0" layoutY="444.0" onMouseClicked="#signIn" text="SIGN IN" textFill="WHITE">
+                <Label layoutX="184.0" layoutY="444.0" onMouseClicked="#signIn" text="SIGNIN" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="12.0" />
                     </font>
@@ -110,12 +104,12 @@
             <effect>
                 <DropShadow>
                     <color>
-                        <Color blue="0.4699999988079071" green="0.4699999988079071" opacity="0.7969204187393188" red="0.4699999988079071" />
+                        <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.7969204187393188" />
                     </color>
                 </DropShadow>
             </effect>
         </AnchorPane>
-        <Label layoutX="101.0" layoutY="260.0" prefHeight="37.0" prefWidth="234.0" text="in organizing, an hour is earned.&quot;">
+        <Label layoutX="101.0" layoutY="260.0" prefHeight="37.0" prefWidth="234.0" text="%secondPart">
             <font>
                 <Font name="System Italic" size="16.0" />
             </font>

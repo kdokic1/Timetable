@@ -7,7 +7,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ChoiceBox fx:id="cbSubjects" layoutX="28.0" layoutY="77.0" prefWidth="150.0" style="-fx-background-radius: 100PX;" />
-      <Label layoutX="28.0" layoutY="40.0" text="Choose the subject you want to remove:" textFill="#820000">
+      <Label layoutX="28.0" layoutY="40.0" text="%subjectToRemove" textFill="#820000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

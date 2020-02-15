@@ -6,19 +6,19 @@
 
 <AnchorPane prefHeight="226.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="28.0" layoutY="33.0" text="Subject name: " textFill="#640000">
+      <Label layoutX="28.0" layoutY="33.0" text="%subjectName" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="fldSubjectName" layoutX="144.0" layoutY="30.0" prefHeight="26.0" prefWidth="180.0" />
-      <Label layoutX="28.0" layoutY="72.0" text="Teacher:" textFill="#640000">
+      <Label layoutX="28.0" layoutY="72.0" text="%teacher" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="fldTeacher" layoutX="144.0" layoutY="69.0" prefHeight="26.0" prefWidth="180.0" />
-      <Label layoutX="28.0" layoutY="106.0" text="Classroom:" textFill="#640000">
+      <Label layoutX="28.0" layoutY="106.0" text="%classroom" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

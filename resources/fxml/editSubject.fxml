@@ -6,19 +6,19 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="420.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="28.0" layoutY="113.0" text="Edit subject name: " textFill="#640000">
+      <Label layoutX="28.0" layoutY="113.0" text="%editSubjectName" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="fldName" layoutX="186.0" layoutY="110.0" prefHeight="26.0" prefWidth="180.0" />
-      <Label layoutX="28.0" layoutY="150.0" text="Edit teacher's name:" textFill="#640000">
+      <Label layoutX="28.0" layoutY="150.0" text="%editTeachersName" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="fldTeacher" layoutX="186.0" layoutY="147.0" prefHeight="26.0" prefWidth="180.0" />
-      <Label layoutX="28.0" layoutY="187.0" text="Edit classroom:" textFill="#640000">
+      <Label layoutX="28.0" layoutY="187.0" text="%editClassroom" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -35,7 +35,7 @@
          </font>
       </Button>
       <ChoiceBox fx:id="cbSubject" layoutX="186.0" layoutY="36.0" prefWidth="150.0" />
-      <Label layoutX="26.0" layoutY="39.0" text="Choose subject:" textFill="#640000">
+      <Label layoutX="26.0" layoutY="39.0" text="%chooseSubject" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

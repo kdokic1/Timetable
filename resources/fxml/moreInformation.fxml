@@ -6,27 +6,27 @@
 
 <AnchorPane prefHeight="310.0" prefWidth="420.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="50.0" layoutY="48.0" text="Subject name : " textFill="#820000" AnchorPane.leftAnchor="50.0">
+      <Label layoutX="50.0" layoutY="48.0" text="%subjectName" textFill="#820000" AnchorPane.leftAnchor="50.0">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="182.0" layoutY="179.0" text="Starts" textFill="#810000" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="179.0">
+      <Label layoutX="182.0" layoutY="179.0" text="%starts" textFill="#810000" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="179.0">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="294.0" layoutY="179.0" text="Ends" textFill="#810000" AnchorPane.topAnchor="179.0">
+      <Label layoutX="294.0" layoutY="179.0" text="%ends" textFill="#810000" AnchorPane.topAnchor="179.0">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="88.0" text="Teacher :" textFill="#810000" AnchorPane.leftAnchor="50.0">
+      <Label layoutX="50.0" layoutY="88.0" text="%teacher" textFill="#810000" AnchorPane.leftAnchor="50.0">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="129.0" text="In classroom:" textFill="#810000" AnchorPane.leftAnchor="50.0">
+      <Label layoutX="44.0" layoutY="129.0" text="%inclassroom" textFill="#810000" AnchorPane.leftAnchor="50.0">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -49,7 +49,7 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="264.0" layoutY="229.0" mnemonicParsing="false" onAction="#removeFieldAction" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 100PX;" text="REMOVE FIELD">
+      <Button layoutX="264.0" layoutY="229.0" mnemonicParsing="false" onAction="#removeFieldAction" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 100PX;" text="%REMOVEFIELD">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

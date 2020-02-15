@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="23.0" layoutY="37.0" text="Choose the Timetable you want to remove: " textFill="#820303">
+      <Label layoutX="23.0" layoutY="37.0" text="%timetableToRemove" textFill="#820303">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

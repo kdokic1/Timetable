@@ -27,7 +27,7 @@
       </Label>
       <HBox layoutX="52.0" layoutY="124.0" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #ccd9ff;" AnchorPane.leftAnchor="50.0">
          <children>
-            <Label text="monday" textFill="#840000">
+            <Label text="%monday" textFill="#840000">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -42,7 +42,7 @@
       </HBox>
       <HBox layoutX="225.0" layoutY="124.0" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #ccd9ff;" AnchorPane.leftAnchor="225.0">
          <children>
-            <Label text="tuesday" textFill="#840000">
+            <Label text="%tuesday" textFill="#840000">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -57,7 +57,7 @@
       </HBox>
       <HBox layoutX="397.0" layoutY="124.0" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #ccd9ff;" AnchorPane.leftAnchor="400.0">
          <children>
-            <Label text="wednesday" textFill="#840000">
+            <Label text="%wednesday" textFill="#840000">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -72,7 +72,7 @@
       </HBox>
       <HBox layoutX="571.0" layoutY="124.0" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #ccd9ff;" AnchorPane.leftAnchor="575.0">
          <children>
-            <Label text="thursday" textFill="#840000">
+            <Label text="%thursday" textFill="#840000">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -87,7 +87,7 @@
       </HBox>
       <HBox layoutX="748.0" layoutY="124.0" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #ccd9ff;" AnchorPane.leftAnchor="750.0">
          <children>
-            <Label text="friday" textFill="#840000">
+            <Label text="%friday" textFill="#840000">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
