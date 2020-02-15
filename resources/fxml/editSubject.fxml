@@ -24,12 +24,12 @@
          </font>
       </Label>
       <TextField fx:id="fldClassroom" layoutX="186.0" layoutY="184.0" prefHeight="26.0" prefWidth="180.0" />
-      <Button layoutX="224.0" layoutY="245.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="OK">
+      <Button layoutX="224.0" layoutY="245.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="300.0" layoutY="245.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="CANCEL">
+      <Button layoutX="300.0" layoutY="245.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

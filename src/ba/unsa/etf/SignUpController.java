@@ -150,6 +150,7 @@ public class SignUpController {
                 containsNumber=true;
         }
 
+
         return containsCapitalLetter && containsNumber;
     }
 

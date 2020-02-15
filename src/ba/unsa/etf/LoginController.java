@@ -70,25 +70,23 @@ public class LoginController extends Application {
         ArrayList<User> users = new ArrayList<>();
         users=dao.getAllUsers();
 
-        for(User u : users){
-            if(u.getUsername().equals(loginUsername.getText())){
-                if(u.getPassword().equals(loginPass.getText())){
-                    String username=loginUsername.getText();
-                    Stage stg = (Stage) loginUsername.getScene().getWindow();
-                    stg.close();
+        boolean userExists = users.stream().anyMatch(user -> user.getUsername().equals(loginUsername.getText()) && user.getPassword().equals(loginPass.getText()));
 
-                    Stage startStage=new Stage();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"));
-                    StartPageController ctrl = new StartPageController(username);
-                    loader.setController(ctrl);
-                    Parent root = loader.load();
-                    startStage.setTitle("Timetable");
-                    ctrl.setUsername(username);
-                    ctrl.setUserLabelText(username);
-                    startStage.setScene(new Scene(root,580,440));
-                    startStage.show();
-                }
-            }
+        if(userExists){
+            String username=loginUsername.getText();
+            Stage stg = (Stage) loginUsername.getScene().getWindow();
+            stg.close();
+
+            Stage startStage=new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"));
+            StartPageController ctrl = new StartPageController(username);
+            loader.setController(ctrl);
+            Parent root = loader.load();
+            startStage.setTitle("Timetable");
+            ctrl.setUsername(username);
+            ctrl.setUserLabelText(username);
+            startStage.setScene(new Scene(root,700,460));
+            startStage.show();
         }
 
         errorLabel.setText("*Invalid username or password");

@@ -18,12 +18,12 @@
          </font>
       </Label>
       <CheckBox fx:id="cbSaturday" layoutX="140.0" layoutY="69.0" mnemonicParsing="false" />
-      <Button layoutX="227.0" layoutY="106.0" mnemonicParsing="false" onAction="#okAction" prefHeight="23.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="OK">
+      <Button layoutX="227.0" layoutY="103.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="309.0" layoutY="106.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="CANCEL">
+      <Button layoutX="309.0" layoutY="103.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

@@ -36,7 +36,7 @@ public class MoreInformationController {
     }
 
     public void initialize(){
-        for(TimetableField tf : fields){
+        fields.stream().forEach(tf -> {
             if(tf.getUser().getUsername().equals(username) && tf.getOrdinalNumber()==ordinalNum && tf.getDay().toString().equals(day)){
                 tempField=tf;
                 subjectName.setText(tf.getSubject().getSubjectName());
@@ -62,7 +62,7 @@ public class MoreInformationController {
                 ends+=String.valueOf(tf.getEnds().getMinutes());
                 endLabel.setText(ends);
             }
-        }
+        });
 
     }
 

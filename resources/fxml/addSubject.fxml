@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="214.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="226.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="28.0" layoutY="33.0" text="Subject name: " textFill="#640000">
          <font>
@@ -24,16 +24,16 @@
          </font>
       </Label>
       <TextField fx:id="fldClassroom" layoutX="144.0" layoutY="103.0" prefHeight="26.0" prefWidth="180.0" />
-      <Button layoutX="234.0" layoutY="176.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="OK">
+      <Button layoutX="225.0" layoutY="176.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="309.0" layoutY="176.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX; -fx-background-color: #ccccb3;" text="CANCEL">
+      <Button layoutX="309.0" layoutY="176.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Label fx:id="errorLabel" layoutX="144.0" layoutY="148.0" prefHeight="18.0" prefWidth="228.0" textFill="RED" />
+      <Label fx:id="errorLabel" layoutX="144.0" layoutY="140.0" prefHeight="18.0" prefWidth="228.0" textFill="RED" />
    </children>
 </AnchorPane>

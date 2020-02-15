@@ -11,13 +11,13 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="cbTimetables" layoutX="23.0" layoutY="70.0" prefHeight="26.0" prefWidth="157.0" style="-fx-background-color: #ccccb3; -fx-background-radius: 100PX;" />
-      <Button layoutX="227.0" layoutY="130.0" mnemonicParsing="false" onAction="#okAction" prefHeight="23.0" prefWidth="59.0" style="-fx-background-color: #ccccb3; -fx-background-radius: 100PX;" text="OK">
+      <ChoiceBox fx:id="cbTimetables" layoutX="23.0" layoutY="70.0" prefHeight="26.0" prefWidth="157.0" style="-fx-background-radius: 100PX;" />
+      <Button layoutX="218.0" layoutY="127.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="68.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="300.0" layoutY="130.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="23.0" prefWidth="59.0" style="-fx-background-color: #ccccb3; -fx-background-radius: 100PX;" text="CANCEL">
+      <Button layoutX="300.0" layoutY="127.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="68.0" style="-fx-background-radius: 100PX;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

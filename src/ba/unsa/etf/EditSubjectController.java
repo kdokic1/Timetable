@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -54,14 +55,17 @@ public class EditSubjectController {
             oldSubject=cbSubject.getValue();
             editedSubject=new Subject(oldSubject.getSubjectName(), oldSubject.getTeacher(),oldSubject.getClassroom(),oldSubject.getUser());
             if(!fldName.getText().isEmpty()){
-                ArrayList<Subject> subjects = dao.getAllSubjects(username);
-                for(Subject s : subjects){
-                    if(s.getSubjectName().equals(fldName.getText())){
-                        Stage stg = (Stage) fldName.getScene().getWindow();
-                        stg.close();
-                    }
+                boolean subjectNameExist=subjects.stream().filter(subject -> !oldSubject.getSubjectName().equals(subject.getSubjectName())).anyMatch(subject -> subject.getSubjectName().equals(fldName.getText()));
+                if(subjectNameExist){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("That subject already exists");
+                    alert.showAndWait();
+                    return;
                 }
-                editedSubject.setSubjectName(fldName.getText());
+                else {
+                    editedSubject.setSubjectName(fldName.getText());
+                }
             }
 
             if(!fldClassroom.getText().isEmpty()){
@@ -73,6 +77,11 @@ public class EditSubjectController {
             }
         }
 
+        Stage stg = (Stage) fldName.getScene().getWindow();
+        stg.close();
+    }
+
+    public void cancelAction(ActionEvent actionEvent){
         Stage stg = (Stage) fldName.getScene().getWindow();
         stg.close();
     }

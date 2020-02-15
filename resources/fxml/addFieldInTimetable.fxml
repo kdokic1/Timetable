@@ -18,12 +18,12 @@
          </font>
       </Label>
       <Spinner fx:id="spinnerHours" layoutX="141.0" layoutY="89.0" prefHeight="26.0" prefWidth="66.0" />
-      <Button layoutX="141.0" layoutY="143.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="65.0" text="OK">
+      <Button layoutX="141.0" layoutY="143.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="65.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="216.0" layoutY="143.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="65.0" text="CANCEL">
+      <Button layoutX="216.0" layoutY="143.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="65.0" style="-fx-background-radius: 100PX;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

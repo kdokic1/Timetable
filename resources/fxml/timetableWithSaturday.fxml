@@ -2,14 +2,24 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1130.0" style="-fx-background-color: #800000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1130.0" style="-fx-background-color: #800000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="timetableNameLabel" layoutX="464.0" layoutY="33.0" text="IME RASPOREDA" textFill="WHITE">
+      <ImageView fitHeight="758.0" fitWidth="1139.0" layoutX="-3.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/books.jpg" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="-0.29" contrast="-0.5" />
+         </effect>
+      </ImageView>
+      <Label fx:id="timetableNameLabel" layoutX="50.0" layoutY="35.0" text="IME RASPOREDA" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="28.0" />
+            <Font name="System Bold Italic" size="34.0" />
          </font>
       </Label>
       <HBox layoutX="52.0" layoutY="124.0" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #ccd9ff;" AnchorPane.leftAnchor="50.0">

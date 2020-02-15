@@ -1,5 +1,7 @@
 package ba.unsa.etf;
 
+import java.time.LocalTime;
+
 public class Timetable {
     private String timetableName;
     private User user;
