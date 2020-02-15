@@ -6,6 +6,7 @@
 }
 
 .myborderregion{
-    -fx-border-color:red;
-    -fx-border-width:3px;
+    -fx-border-color:yellow;
+    -fx-border-width:2px;
+    -fx-border-radius:100PX;
 }

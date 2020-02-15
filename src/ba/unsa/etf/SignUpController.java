@@ -55,52 +55,68 @@ public class SignUpController {
     }
 
     public void signUpAction(ActionEvent actionEvent) throws IOException {
+        fldUsername.getStyleClass().remove("myborderregion");
+        fldLastName.getStyleClass().remove("myborderregion");
+        fldFirstName.getStyleClass().remove("myborderregion");
+        fldEmail.getStyleClass().remove("myborderregion");
+        fldPass.getStyleClass().remove("myborderregion");
+
         if(!errorLabel.getText().isEmpty())
             errorLabel.setText("");
 
         ArrayList<User> users = new ArrayList<>();
         users=dao.getAllUsers();
 
+        String errorText = "";
+
+        if(fldUsername.getText().isEmpty() || fldFirstName.getText().isEmpty() || fldLastName.getText().isEmpty() || fldEmail.getText().isEmpty() || fldPass.getText().isEmpty()){
+            errorText=errorText+"*You did not enter all fields\n";
+        }
+
         if(fldUsername.getText().isEmpty()){
-            errorLabel.setText("You did not enter your username");
-            return;
+            fldUsername.getStyleClass().add("myborderregion");
         }
 
         if(fldFirstName.getText().isEmpty()){
-            errorLabel.setText("You did not enter your first name");
-            return;
+            fldFirstName.getStyleClass().add("myborderregion");
         }
 
         if(fldLastName.getText().isEmpty()){
-            errorLabel.setText("You did not enter your last name");
-            return;
+            fldLastName.getStyleClass().add("myborderregion");
         }
 
         if(fldEmail.getText().isEmpty()){
-            errorLabel.setText("You did not enter your e-mail");
-            return;
+            fldEmail.getStyleClass().add("myborderregion");
         }
 
         if(fldPass.getText().isEmpty()){
-            errorLabel.setText("You did not enter your password");
+            fldPass.getStyleClass().add("myborderregion");
+        }
+
+        if(!errorText.equals("")){
+            errorLabel.setText(errorText);
             return;
         }
             for (User u : users) {
                 if (u.getUsername().equals(fldUsername.getText())) {
-                    errorLabel.setText("This username is already used");
-                    return;
+                    fldUsername.getStyleClass().add("myborderregion");
+                    errorText=errorText+"*This username is already used\n";
                 }
             }
 
         if(!validEmail(fldEmail.getText())){
-            errorLabel.setText("Incorrect e-mail");
-            return;
+            fldEmail.getStyleClass().add("myborderregion");
+            errorText=errorText+"*Incorrect e-mail\n";
         }
 
         if(!validPass(fldPass.getText())){
-            errorLabel.setText("Password should contains\nat least 8 characters,\none number and one capital letter");
-            return;
+            fldPass.getStyleClass().add("myborderregion");
+            errorText=errorText+"*Password should contains\nat least 8 characters,\none number and one capital letter";
         }
+
+        errorLabel.setText(errorText);
+        if(!errorText.equals(""))
+            return;
 
         User user = new User(fldFirstName.getText(),fldLastName.getText(),fldEmail.getText(),fldUsername.getText(),fldPass.getText());
 

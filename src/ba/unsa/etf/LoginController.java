@@ -58,11 +58,13 @@ public class LoginController extends Application {
         signupStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView.setImage(img);
-        signupStage.setScene(new Scene(root, 700, 560));
+        signupStage.setScene(new Scene(root, 700, 610));
         signupStage.show();
     }
 
     public void loginAction(ActionEvent actionEvent) throws IOException, SQLException {
+        loginUsername.getStyleClass().remove("myborderregion");
+        loginPass.getStyleClass().remove("myborderregion");
         if(!errorLabel.getText().isEmpty())
             errorLabel.setText("");
         ArrayList<User> users = new ArrayList<>();
@@ -89,7 +91,9 @@ public class LoginController extends Application {
             }
         }
 
-        errorLabel.setText("Invalid username or password");
+        errorLabel.setText("*Invalid username or password");
+        loginUsername.getStyleClass().add("myborderregion");
+        loginPass.getStyleClass().add("myborderregion");
     }
 
 }
