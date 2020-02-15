@@ -58,7 +58,7 @@ public class LoginController extends Application {
         signupStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView.setImage(img);
-        signupStage.setScene(new Scene(root, 700, 500));
+        signupStage.setScene(new Scene(root, 700, 560));
         signupStage.show();
     }
 

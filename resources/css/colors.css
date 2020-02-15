@@ -4,3 +4,8 @@
 .poljeNijeIspravno {
     -fx-control-inner-background: lightpink;
 }
+
+.myborderregion{
+    -fx-border-color:red;
+    -fx-border-width:3px;
+}

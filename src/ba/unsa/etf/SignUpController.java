@@ -98,7 +98,7 @@ public class SignUpController {
         }
 
         if(!validPass(fldPass.getText())){
-            errorLabel.setText("Password should contains at least 8 characters, 1 number and 1 capital letter");
+            errorLabel.setText("Password should contains\nat least 8 characters,\none number and one capital letter");
             return;
         }
 
