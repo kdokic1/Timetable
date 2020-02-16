@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <ImageView fitHeight="500.0" fitWidth="700.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -16,7 +23,7 @@
             <ColorAdjust brightness="-0.3" contrast="-0.36" />
          </effect>
       </ImageView>
-        <AnchorPane layoutX="112.0" layoutY="138.0" prefHeight="254.0" prefWidth="219.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="112.0" AnchorPane.topAnchor="137.0">
+        <AnchorPane layoutX="99.0" layoutY="138.0" prefHeight="253.0" prefWidth="232.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="99.0" AnchorPane.topAnchor="137.0">
             <children>
                 <Button layoutX="63.0" layoutY="44.0" mnemonicParsing="false" onAction="#addNewTimetableAction" prefHeight="26.0" prefWidth="157.0" style="-fx-background-radius: 100PX; -fx-background-color: #ffffff;" text="%addTimetable" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
                     <font>
@@ -43,29 +50,29 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-                <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="161.0" layoutY="29.0">
-                    <image>
-                        <Image url="@../../../../AppData/Local/Temp/icons8_plus_math_32px.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="161.0" layoutY="109.0">
-                    <image>
-                        <Image url="@../../../../AppData/Local/Temp/icons8_plus_math_32px.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="161.0" layoutY="69.0">
-                    <image>
-                        <Image url="@../../../../AppData/Local/Temp/icons8_delete_30px_1.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="161.0" layoutY="149.0">
-                    <image>
-                        <Image url="@../../../../AppData/Local/Temp/icons8_delete_30px_1.png" />
-                    </image>
-                </ImageView>
-            <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="161.0" layoutY="189.0">
+            <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="197.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../AppData/Local/Temp/icons8_edit_file_24px_1.png" />
+                  <Image url="@../images/remove%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="197.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/add%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="197.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/remove%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="197.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/edit%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="197.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/add%20(2).png" />
                </image>
             </ImageView>
             </children>
@@ -73,14 +80,6 @@
             <DropShadow height="18.62" radius="11.192499999999999" width="28.15" />
          </effect>
         </AnchorPane>
-          <Label layoutX="142.0" layoutY="54.0" text="%hi" textFill="WHITE">
-              <font>
-                  <Font name="System Bold Italic" size="23.0" />
-              </font>
-         <effect>
-            <DropShadow />
-         </effect>
-          </Label>
           <Label layoutX="174.0" layoutY="88.0" text="%welcomeBack" textFill="WHITE">
               <font>
                   <Font name="System Bold Italic" size="23.0" />
@@ -89,7 +88,7 @@
             <DropShadow />
          </effect>
           </Label>
-      <Label fx:id="userLabel" layoutX="174.0" layoutY="54.0" text="User" textFill="WHITE">
+      <Label fx:id="userLabel" layoutX="132.0" layoutY="53.0" text="User" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
@@ -97,10 +96,10 @@
             <DropShadow />
          </effect>
       </Label>
-      <AnchorPane layoutX="386.0" layoutY="137.0" prefHeight="254.0" prefWidth="219.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="137.0">
+      <AnchorPane layoutX="386.0" layoutY="137.0" prefHeight="253.0" prefWidth="218.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="137.0">
          <children>
             <ChoiceBox fx:id="cbTimetables" layoutX="34.0" layoutY="60.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 100PX;" />
-                <Label layoutX="45.0" layoutY="14.0" text="%chooseTimetable" textAlignment="CENTER" textFill="WHITE">
+                <Label layoutX="24.0" layoutY="14.0" text="%chooseTimetable" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="12.0" />
                     </font>
@@ -110,6 +109,11 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Label layoutX="60.0" layoutY="32.0" text="%youwouldliketosee" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow height="23.0" radius="12.25" width="28.0" />
@@ -117,21 +121,21 @@
       </AnchorPane>
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="700.0" AnchorPane.topAnchor="0.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="%file">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-                  <Menu mnemonicParsing="false" text="Language">
+              <MenuItem mnemonicParsing="false" onAction="#closeAction" text="%close" />
+                  <Menu mnemonicParsing="false" text="%language">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="bosanski" />
-                        <MenuItem mnemonicParsing="false" text="engleski" />
+                      <MenuItem mnemonicParsing="false" onAction="#bosnianLanguage" text="%bosanski" />
+                        <MenuItem mnemonicParsing="false" onAction="#englishLanguage" text="%engleski" />
                     </items>
                   </Menu>
-                  <MenuItem mnemonicParsing="false" text="logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#logoutAction" text="%logout" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="%help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="%about" />
             </items>
           </Menu>
         </menus>

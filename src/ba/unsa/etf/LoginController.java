@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoginController extends Application {
     public ImageView imgView=new ImageView();
@@ -33,11 +35,15 @@ public class LoginController extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
         LoginController ctrl = new LoginController();
-        FXMLLoader loader =  new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        FXMLLoader loader =  new FXMLLoader(getClass().getResource("/fxml/login.fxml"),bundle);
         loader.setController(ctrl);
         Parent root = loader.load();
-        primaryStage.setTitle("Timetable");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            primaryStage.setTitle("Raspored");
+        else
+            primaryStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView.setImage(img);
         primaryStage.setScene(new Scene(root, 700, 500));
@@ -51,15 +57,37 @@ public class LoginController extends Application {
 
         Stage signupStage = new Stage();
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/signup.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/signup.fxml"),bundle);
         SignUpController ctrl = new SignUpController();
         loader.setController(ctrl);
         Parent root = loader.load();
-        signupStage.setTitle("Timetable");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            signupStage.setTitle("Raspored");
+        else
+            signupStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView.setImage(img);
         signupStage.setScene(new Scene(root, 700, 610));
         signupStage.show();
+    }
+
+    public void engAction(MouseEvent mouseEvent) throws IOException {
+        Locale.setDefault(new Locale("en","US"));
+        changeLanguage();
+    }
+
+    public void bosAction(MouseEvent mouseEvent) throws IOException {
+        Locale.setDefault(new Locale("bs","BA"));
+        changeLanguage();
+    }
+
+
+    private void changeLanguage() throws IOException {
+        Stage stage = (Stage) loginPass.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"),ResourceBundle.getBundle("Translation"));
+        loader.setController(this);
+        stage.setScene(new Scene(loader.load()));
     }
 
     public void loginAction(ActionEvent actionEvent) throws IOException, SQLException {
@@ -78,18 +106,25 @@ public class LoginController extends Application {
             stg.close();
 
             Stage startStage=new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"),bundle);
             StartPageController ctrl = new StartPageController(username);
             loader.setController(ctrl);
             Parent root = loader.load();
-            startStage.setTitle("Timetable");
+            if(Locale.getDefault().getCountry().equals("BA"))
+                startStage.setTitle("Raspored");
+            else
+                startStage.setTitle("Timetable");
             ctrl.setUsername(username);
             ctrl.setUserLabelText(username);
             startStage.setScene(new Scene(root,700,460));
             startStage.show();
         }
 
-        errorLabel.setText("*Invalid username or password");
+        if(Locale.getDefault().getCountry().equals("Ba"))
+            errorLabel.setText("Pogresno korisnicko ime ili lozinka");
+        else
+            errorLabel.setText("*Invalid username or password");
         loginUsername.getStyleClass().add("myborderregion");
         loginPass.getStyleClass().add("myborderregion");
     }

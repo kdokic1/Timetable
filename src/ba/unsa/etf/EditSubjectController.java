@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class EditSubjectController {
     private String username = new String();
@@ -59,7 +60,10 @@ public class EditSubjectController {
                 if(subjectNameExist){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
-                    alert.setContentText("That subject already exists");
+                    if(Locale.getDefault().getCountry().equals("BA"))
+                        alert.setContentText("Predmet sa takvim nazivom vec postoji");
+                    else
+                        alert.setContentText("Subject with this name already exists");
                     alert.showAndWait();
                     return;
                 }

@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AddSubjectController {
     private Subject subject=null;
@@ -30,13 +31,20 @@ public class AddSubjectController {
             errorLabel.setText("");
 
         if(fldSubjectName.getText().isEmpty() || fldTeacher.getText().isEmpty() || fldClassroom.getText().isEmpty()){
-            errorLabel.setText("Some field might be empty");
+            if(Locale.getDefault().getCountry().equals("BA")){
+                errorLabel.setText("Neka polja su ostala prazna");
+            }
+            else
+                errorLabel.setText("Some field might be empty");
             return;
         }
 
         for(Subject s : subjects){
             if(s.getSubjectName().equals(fldSubjectName.getText())){
-                errorLabel.setText("That subject already exists");
+                if(Locale.getDefault().getCountry().equals("BA"))
+                    errorLabel.setText("Taj predmet vec postoji");
+                else
+                    errorLabel.setText("That subject already exists");
                 return;
             }
         }

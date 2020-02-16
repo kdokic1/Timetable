@@ -6,12 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class TimetableController {
     protected String timetableName=new String();
@@ -199,11 +202,15 @@ public class TimetableController {
         }
         if(btn.getText().equals("")){
             Stage addFieldStage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addFieldInTimetable.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addFieldInTimetable.fxml"),bundle);
             AddFieldInTimetableController ctrl = new AddFieldInTimetableController(subjectDAO.getAllSubjects(username),day,ordinalNum);
             loader.setController(ctrl);
             Parent root = loader.load();
-            addFieldStage.setTitle("Add Field");
+            if(Locale.getDefault().getCountry().equals("BA"))
+                addFieldStage.setTitle("Dodaj polje");
+            else
+                addFieldStage.setTitle("Add Field");
             addFieldStage.setScene(new Scene(root,320,180));
             addFieldStage.setOnHiding(event -> {
                 if(ctrl.getTimetableField()!=null){
@@ -224,10 +231,13 @@ public class TimetableController {
         }
         else{
             Stage moreInfoStage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/moreInformation.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/moreInformation.fxml"),bundle);
             MoreInformationController ctrl = new MoreInformationController(timetable,nameOfTheDay,ordinalNum,username);
             loader.setController(ctrl);
             Parent root = loader.load();
+            if(Locale.getDefault().getCountry().equals("BA"))
+                moreInfoStage.setTitle("Vise informacija");
             moreInfoStage.setTitle("More infromation");
             moreInfoStage.setScene(new Scene(root,420,310));
             moreInfoStage.setOnHiding(event -> {
@@ -237,5 +247,25 @@ public class TimetableController {
             });
             moreInfoStage.show();
         }
+    }
+
+    public void backAction(MouseEvent mouseEvent) throws SQLException, IOException {
+        Stage stage = (Stage) timetableNameLabel.getScene().getWindow();
+        stage.close();
+
+        Stage startStage=new Stage();
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"),bundle);
+        StartPageController ctrl = new StartPageController(username);
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        if(Locale.getDefault().getCountry().equals("BA"))
+            startStage.setTitle("Raspored");
+        else
+            startStage.setTitle("Timetable");
+        ctrl.setUsername(username);
+        ctrl.setUserLabelText(username);
+        startStage.setScene(new Scene(root,700,460));
+        startStage.show();
     }
 }

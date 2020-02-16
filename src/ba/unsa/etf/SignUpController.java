@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SignUpController {
     public ImageView imgView2=new ImageView();
@@ -43,11 +45,15 @@ public class SignUpController {
 
         Stage signupStage = new Stage();
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/login.fxml"),bundle);
         LoginController ctrl = new LoginController();
         loader.setController(ctrl);
         Parent root = loader.load();
-        signupStage.setTitle("Timetable");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            signupStage.setTitle("Raspored");
+        else
+            signupStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView2.setImage(img);
         signupStage.setScene(new Scene(root, 700, 500));
@@ -71,7 +77,10 @@ public class SignUpController {
             String errorText = "";
 
             if (fldUsername.getText().isEmpty() || fldFirstName.getText().isEmpty() || fldLastName.getText().isEmpty() || fldEmail.getText().isEmpty() || fldPass.getText().isEmpty()) {
-                errorText = errorText + "*You did not enter all fields\n";
+                if(Locale.getDefault().getCountry().equals("BA"))
+                    errorText=errorText+"Nisu unesena sva polja\n";
+                else
+                    errorText = errorText + "*You did not enter all fields\n";
             }
 
             if (fldUsername.getText().isEmpty()) {
@@ -100,18 +109,27 @@ public class SignUpController {
             for (User u : users) {
                 if (u.getUsername().equals(fldUsername.getText())) {
                     fldUsername.getStyleClass().add("myborderregion");
-                    errorText = errorText + "*This username is already used\n";
+                    if(Locale.getDefault().getCountry().equals("BA"))
+                        errorText=errorText+"*Ovo korisnicko ime vec postoji\n";
+                    else
+                        errorText = errorText + "*This username is already used\n";
                 }
             }
 
             if (!validEmail(fldEmail.getText())) {
                 fldEmail.getStyleClass().add("myborderregion");
-                errorText = errorText + "*Incorrect e-mail\n";
+                if(Locale.getDefault().getCountry().equals("BA"))
+                    errorText=errorText+"*Pogresan e-mail\n";
+                else
+                    errorText = errorText + "*Incorrect e-mail\n";
             }
 
             if (!validPass(fldPass.getText())) {
                 fldPass.getStyleClass().add("myborderregion");
-                errorText = errorText + "*Password should contains\nat least 8 characters,\none number and one capital letter";
+                if(Locale.getDefault().getCountry().equals("BA"))
+                    errorText=errorText+"*Lozinka treba da sadrzi\nnajmanje 8 karaktera,\njedan broj i jedno slovo";
+                else
+                    errorText = errorText + "*Password should contains\nat least 8 characters,\none number and one capital letter";
             }
 
             //errorLabel.setText(errorText);

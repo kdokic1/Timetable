@@ -8,13 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class StartPageController {
     public SubjectDAO dao = SubjectDAO.getInstance();
@@ -36,7 +40,10 @@ public class StartPageController {
     }
 
     public void setUserLabelText(String username){
-        userLabel.setText(username);
+        if(Locale.getDefault().getCountry().equals("BA"))
+            userLabel.setText("Zdravo "+username);
+        else
+            userLabel.setText("Hi "+username);
     }
 
 
@@ -47,8 +54,16 @@ public class StartPageController {
 //        cbSubjects.setItems(subjectNames);
 
         timetables= new Timetables(timetableDAO.getAllTimetablesForUser(username));
+        allTimetables.removeAll(allTimetables);
         allTimetables.addAll(timetables.getTimetables());
         cbTimetables.setItems(allTimetables);
+
+
+
+        if(Locale.getDefault().getCountry().equals("BA"))
+            userLabel.setText("Zdravo "+username);
+        else
+            userLabel.setText("Hi "+username);
 
 
     }
@@ -75,11 +90,15 @@ public class StartPageController {
 
     public void addNewSubjectAction(ActionEvent actionEvent) throws IOException {
         Stage addSubjectStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addSubject.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addSubject.fxml"),bundle);
         AddSubjectController ctrl = new AddSubjectController();
         loader.setController(ctrl);
         Parent root = loader.load();
-        addSubjectStage.setTitle("Add subject");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            addSubjectStage.setTitle("Dodaj predmet");
+        else
+            addSubjectStage.setTitle("Add subject");
         addSubjectStage.setScene(new Scene(root,390,220));
         ctrl.setUsername(username);
 
@@ -101,11 +120,15 @@ public class StartPageController {
 
     public void removeSubjectAction(ActionEvent actionEvent) throws IOException {
         Stage removeSubjectStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/removeSubject.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/removeSubject.fxml"),bundle);
         RemoveSubjectController ctrl = new RemoveSubjectController(username);
         loader.setController(ctrl);
         Parent root = loader.load();
-        removeSubjectStage.setTitle("Add subject");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            removeSubjectStage.setTitle("Dodaj predmet");
+        else
+            removeSubjectStage.setTitle("Add subject");
         removeSubjectStage.setScene(new Scene(root,390,220));
 
         removeSubjectStage.setOnHiding(event -> {
@@ -125,11 +148,15 @@ public class StartPageController {
 
     public void editSubjectAction(ActionEvent actionEvent) throws IOException {
         Stage editSubjecStage= new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editSubject.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editSubject.fxml"),bundle);
         EditSubjectController ctrl = new EditSubjectController(username);
         loader.setController(ctrl);
         Parent root = loader.load();
-        editSubjecStage.setTitle("Edit subject");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            editSubjecStage.setTitle("Uredi predmet");
+        else
+            editSubjecStage.setTitle("Edit subject");
         editSubjecStage.setScene(new Scene(root,420,300));
         editSubjecStage.setOnHiding(event -> {
             if(ctrl.getEditedSubject()!=null){
@@ -148,11 +175,15 @@ public class StartPageController {
 
     public void addNewTimetableAction(ActionEvent actionEvent) throws IOException {
         Stage addNewTimetableStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addTimetable.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addTimetable.fxml"),bundle);
         AddTimetableController ctrl = new AddTimetableController(username,timetables);
         loader.setController(ctrl);
         Parent root = loader.load();
-        addNewTimetableStage.setTitle("Add Timetable");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            addNewTimetableStage.setTitle("Dodaj raspored");
+        else
+            addNewTimetableStage.setTitle("Add Timetable");
         addNewTimetableStage.setScene(new Scene(root,390,140));
         addNewTimetableStage.setOnHiding(event -> {
             if(ctrl.getTimetable()!=null){
@@ -171,11 +202,15 @@ public class StartPageController {
 
     public void removeTimetableAction(ActionEvent actionEvent) throws IOException {
         Stage removeTimetableStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/removeTimetable.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/removeTimetable.fxml"),bundle);
         RemoveTimetableController ctrl = new RemoveTimetableController(username,timetables);
         loader.setController(ctrl);
         Parent root = loader.load();
-        removeTimetableStage.setTitle("Remove Timetable");
+        if(Locale.getDefault().getCountry().equals("BA"))
+            removeTimetableStage.setTitle("Obrisi raspored");
+        else
+            removeTimetableStage.setTitle("Remove Timetable");
         removeTimetableStage.setScene(new Scene(root,390,180));
         removeTimetableStage.setOnHiding(event -> {
             if(ctrl.getTimetableForRemove()!=null){
@@ -192,24 +227,32 @@ public class StartPageController {
     }
 
     public void openAction(ActionEvent actionEvent) throws IOException {
-        closeStage();
 
         Stage timetableStage = new Stage();
         FXMLLoader loader;
         if (cbTimetables.getValue() != null) {
+            closeStage();
             if (cbTimetables.getValue().isIncludeSaturday()) {
-                loader = new FXMLLoader(getClass().getResource("/fxml/timetableWithSaturday.fxml"));
+                ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+                loader = new FXMLLoader(getClass().getResource("/fxml/timetableWithSaturday.fxml"),bundle);
                 TimetableWithSaturdayController ctrl = new TimetableWithSaturdayController(cbTimetables.getValue(),username);
                 loader.setController(ctrl);
                 Parent root = loader.load();
-                timetableStage.setTitle("Timetable");
+                if(Locale.getDefault().getCountry().equals("BA"))
+                    timetableStage.setTitle("Raspored");
+                else
+                    timetableStage.setTitle("Timetable");
                 timetableStage.setScene(new Scene(root,1130,700));
             } else {
-                loader = new FXMLLoader(getClass().getResource("/fxml/timetable.fxml"));
+                ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+                loader = new FXMLLoader(getClass().getResource("/fxml/timetable.fxml"),bundle);
                 TimetableController ctrl = new TimetableController(cbTimetables.getValue(),username);
                 loader.setController(ctrl);
                 Parent root = loader.load();
-                timetableStage.setTitle("Timetable");
+                if(Locale.getDefault().getCountry().equals("BA"))
+                    timetableStage.setTitle("Raspored");
+                else
+                    timetableStage.setTitle("Timetable");
                 timetableStage.setScene(new Scene(root,965,700));
             }
 
@@ -217,5 +260,89 @@ public class StartPageController {
 
         }
     }
+
+    public void logoutAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) userLabel.getScene().getWindow();
+        stage.close();
+
+        ResourceBundle resourceBundle=ResourceBundle.getBundle("Translation");
+        LoginController ctrl = new LoginController();
+        Stage primaryStage = new Stage();
+        FXMLLoader loader =  new FXMLLoader(getClass().getResource("/fxml/login.fxml"),resourceBundle);
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        if(Locale.getDefault().getCountry().equals("BA"))
+            primaryStage.setTitle("Raspored");
+        else
+            primaryStage.setTitle("Timetable");
+        Image img = new Image("/images/mfp.png");
+        ctrl.imgView.setImage(img);
+        primaryStage.setScene(new Scene(root, 700, 500));
+        primaryStage.show();
+
+    }
+
+    public void closeAction(ActionEvent actionEvent){
+        System.exit(0);
+    }
+
+    public void aboutAction(ActionEvent actionEvent){
+        Alert alert= new Alert(Alert.AlertType.INFORMATION);
+        if(Locale.getDefault().getCountry().equals("BA")) {
+            alert.setTitle("Informacije o aplikaciji");
+            alert.setHeaderText(null);
+            alert.setContentText("MFP Timetable je softver koji služi za kreiranje različitih rasporeda.\n" +
+                    "MFP u nazivu softvera znači 'My first project'.\n" +
+                    "Ovaj projekat je kreiran od strane Kanite Đokić kao fakultetski projekat.\n" +
+                    "Trenutna verzija: 1.0.1");
+        }
+        else{
+            alert.setHeaderText(null);
+            alert.setTitle("App information");
+            alert.setContentText("MFP Timetable is software for creating different timetables.\n" +
+                    "MPF in software title means 'My first project'.\n" +
+                    "This project is created by Kanita Đokić.\n" +
+                    "Current version: 1.0.1");
+        }
+        alert.showAndWait();
+    }
+    public void bosnianLanguage(ActionEvent actionEvent) throws IOException {
+        Locale.setDefault(new Locale("bs","BA"));
+        changeLanguage();
+    }
+
+    public void englishLanguage(ActionEvent actionEvent) throws IOException {
+        Locale.setDefault(new Locale("en","US"));
+        changeLanguage();
+    }
+
+    private void changeLanguage() throws IOException {
+        if(Locale.getDefault().getCountry().equals("BA"))
+            userLabel.setText("Zdravo "+username);
+        else
+            userLabel.setText("Hi "+username);
+        Stage stage = (Stage) userLabel.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"),ResourceBundle.getBundle("Translation"));
+        loader.setController(this);
+        stage.setScene(new Scene(loader.load()));
+    }
+//    private void changeLanguage () {
+//        if(Locale.getDefault().getCountry().equals("BS")) {
+//            labelGreeting.setText("Zdravo, " + currentUser.getName());
+//            labelGreeting1.setText("Zdravo, " + currentUser.getName());
+//        }
+//        else {
+//            labelGreeting.setText("Welcome back, " + currentUser.getName());
+//            labelGreeting1.setText("Welcome back, " + currentUser.getName());
+//        }
+//        Stage scene = (Stage) choiceType.getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainUserForm.fxml"), ResourceBundle.getBundle("translation"));
+//        loader.setController(this);
+//        try {
+//            scene.setScene(new Scene(loader.load()));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }

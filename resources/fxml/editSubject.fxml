@@ -11,30 +11,30 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="fldName" layoutX="186.0" layoutY="110.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="fldName" layoutX="210.0" layoutY="110.0" prefHeight="26.0" prefWidth="180.0" />
       <Label layoutX="28.0" layoutY="150.0" text="%editTeachersName" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="fldTeacher" layoutX="186.0" layoutY="147.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="fldTeacher" layoutX="210.0" layoutY="147.0" prefHeight="26.0" prefWidth="180.0" />
       <Label layoutX="28.0" layoutY="187.0" text="%editClassroom" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="fldClassroom" layoutX="186.0" layoutY="184.0" prefHeight="26.0" prefWidth="180.0" />
-      <Button layoutX="224.0" layoutY="245.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="OK">
+      <TextField fx:id="fldClassroom" layoutX="210.0" layoutY="184.0" prefHeight="26.0" prefWidth="180.0" />
+      <Button layoutX="233.0" layoutY="245.0" mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="OK">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="300.0" layoutY="245.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="CANCEL">
+      <Button layoutX="323.0" layoutY="245.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 100PX;" text="CANCEL">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="cbSubject" layoutX="186.0" layoutY="36.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbSubject" layoutX="210.0" layoutY="36.0" prefWidth="150.0" />
       <Label layoutX="26.0" layoutY="39.0" text="%chooseSubject" textFill="#640000">
          <font>
             <Font name="System Bold Italic" size="14.0" />

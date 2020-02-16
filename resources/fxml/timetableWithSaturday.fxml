@@ -17,7 +17,7 @@
             <ColorAdjust brightness="-0.29" contrast="-0.5" />
          </effect>
       </ImageView>
-      <Label fx:id="timetableNameLabel" layoutX="50.0" layoutY="35.0" text="IME RASPOREDA" textFill="WHITE">
+      <Label fx:id="timetableNameLabel" layoutX="128.0" layoutY="34.0" text="IME RASPOREDA" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="34.0" />
          </font>
@@ -189,5 +189,10 @@
       <Button fx:id="SAT5" layoutX="925.0" layoutY="460.0" mnemonicParsing="false" onAction="#moreInfoAction" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #4d79ff;" />
       <Button fx:id="SAT6" layoutX="925.0" layoutY="530.0" mnemonicParsing="false" onAction="#moreInfoAction" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #3366ff;" />
       <Button fx:id="SAT7" layoutX="925.0" layoutY="599.0" mnemonicParsing="false" onAction="#moreInfoAction" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #1a53ff;" />
+      <ImageView fitHeight="50.0" fitWidth="60.0" layoutX="50.0" layoutY="34.0" onMouseClicked="#backAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
