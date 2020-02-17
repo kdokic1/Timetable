@@ -25,7 +25,7 @@
             </children></AnchorPane>
         <AnchorPane layoutX="368.0" layoutY="29.0" prefHeight="426.0" prefWidth="282.0" style="-fx-background-color: #800000;" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="368.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="29.0">
             <children>
-                <Label layoutX="77.0" layoutY="14.0" prefHeight="54.0" prefWidth="131.0" text="Sign up" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="54.0" prefWidth="282.0" text="%SIGNUPSTART" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="35.0" />
                     </font>

@@ -13,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -326,23 +327,13 @@ public class StartPageController {
         loader.setController(this);
         stage.setScene(new Scene(loader.load()));
     }
-//    private void changeLanguage () {
-//        if(Locale.getDefault().getCountry().equals("BS")) {
-//            labelGreeting.setText("Zdravo, " + currentUser.getName());
-//            labelGreeting1.setText("Zdravo, " + currentUser.getName());
-//        }
-//        else {
-//            labelGreeting.setText("Welcome back, " + currentUser.getName());
-//            labelGreeting1.setText("Welcome back, " + currentUser.getName());
-//        }
-//        Stage scene = (Stage) choiceType.getScene().getWindow();
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainUserForm.fxml"), ResourceBundle.getBundle("translation"));
-//        loader.setController(this);
-//        try {
-//            scene.setScene(new Scene(loader.load()));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+    public void printAction(ActionEvent actionEvent){
+        try {
+            new PrintReport().showReport(UsersDAO.getConn());
+        } catch (JRException e1) {
+            e1.printStackTrace();
+        }
+    }
 
 }
