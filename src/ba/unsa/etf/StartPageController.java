@@ -119,7 +119,7 @@ public class StartPageController {
                 }
             }
         });
-
+        addSubjectStage.setResizable(false);
         addSubjectStage.show();
     }
 
@@ -148,6 +148,7 @@ public class StartPageController {
 
         });
 
+        removeSubjectStage.setResizable(false);
         removeSubjectStage.show();
     }
 
@@ -175,6 +176,7 @@ public class StartPageController {
                 }
             }
         });
+        editSubjecStage.setResizable(false);
         editSubjecStage.show();
     }
 
@@ -202,6 +204,7 @@ public class StartPageController {
                 }
             }
         });
+        addNewTimetableStage.setResizable(false);
         addNewTimetableStage.show();
     }
 
@@ -228,6 +231,7 @@ public class StartPageController {
                 }
             }
         });
+        removeTimetableStage.setResizable(false);
         removeTimetableStage.show();
     }
 
@@ -261,6 +265,7 @@ public class StartPageController {
                 timetableStage.setScene(new Scene(root,965,700));
             }
 
+            timetableStage.setResizable(false);
             timetableStage.show();
 
         }
@@ -283,6 +288,7 @@ public class StartPageController {
         Image img = new Image("/images/mfp.png");
         ctrl.imgView.setImage(img);
         primaryStage.setScene(new Scene(root, 700, 500));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }
@@ -296,9 +302,9 @@ public class StartPageController {
         if(Locale.getDefault().getCountry().equals("BA")) {
             alert.setTitle("Informacije o aplikaciji");
             alert.setHeaderText(null);
-            alert.setContentText("MFP Timetable je softver koji služi za kreiranje različitih rasporeda.\n" +
+            alert.setContentText("MFP Timetable je softver koji služi za kreiranje rasporeda.\n" +
                     "MFP u nazivu softvera znači 'My first project'.\n" +
-                    "Ovaj projekat je kreiran od strane Kanite Đokić kao fakultetski projekat.\n" +
+                    "Projekat je kreiran od strane Kanite Đokić\n" +
                     "Trenutna verzija: 1.0.1");
         }
         else{

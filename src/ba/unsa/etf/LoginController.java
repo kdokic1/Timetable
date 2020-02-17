@@ -47,6 +47,7 @@ public class LoginController extends Application {
             primaryStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView.setImage(img);
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
     }
@@ -69,6 +70,7 @@ public class LoginController extends Application {
             signupStage.setTitle("Timetable");
         Image img = new Image("/images/mfp.png");
         imgView.setImage(img);
+        signupStage.setResizable(false);
         signupStage.setScene(new Scene(root, 700, 610));
         signupStage.show();
     }
@@ -138,6 +140,7 @@ public class LoginController extends Application {
                 ctrl.setUsername(username);
                 ctrl.setUserLabelText(username);
                 startStage.setScene(new Scene(roots[0],700,460));
+                startStage.setResizable(false);
                 startStage.show();
             });
 
