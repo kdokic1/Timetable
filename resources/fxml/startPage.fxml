@@ -123,6 +123,7 @@
                     </items>
                   </Menu>
                   <MenuItem mnemonicParsing="false" onAction="#printAction" text="%printSubjects" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAction" text="%saveTimetables" />
                   <MenuItem mnemonicParsing="false" onAction="#logoutAction" text="%logout" />
               <MenuItem mnemonicParsing="false" onAction="#closeAction" text="%close" />
             </items>

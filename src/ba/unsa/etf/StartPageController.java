@@ -12,9 +12,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -334,6 +337,53 @@ public class StartPageController {
         } catch (JRException e1) {
             e1.printStackTrace();
         }
+    }
+
+    public void saveAction(ActionEvent actionEvent) throws IOException, SQLException {
+        FileChooser.ExtensionFilter extensionFilter=new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+        FileChooser fileChooser =new FileChooser();
+        fileChooser.getExtensionFilters().add(extensionFilter);
+        File izabrani = fileChooser.showOpenDialog(userLabel.getScene().getWindow());
+        zapisiDatoteku(izabrani);
+    }
+
+    private void zapisiDatoteku(File file) throws SQLException, IOException {
+        FileWriter izlaz=new FileWriter(file);;
+        if(file != null) {
+            for (Timetable t : timetables.getTimetables()) {
+                if (t.getUser().getUsername().equals(username)) {
+                    ArrayList<TimetableField> timetableFields = timetableDAO.getFields(t);
+                    String monday = "\nMONDAY:\n";
+                    String tuesday = "\nTUESDAY:\n";
+                    String wednesday = "\nWEDNESDAY\n";
+                    String thursday = "\nTHURSDAY\n";
+                    String friday = "\nFRIDAY\n";
+                    String saturday = "\nSATURDAY\n";
+
+
+                    for (TimetableField tf : timetableFields) {
+                        if (tf.getDay() == Day.MON) {
+                            monday += tf.getSubject().getSubjectName() + "\n";
+                        } else if (tf.getDay() == Day.TUE) {
+                            tuesday += tf.getSubject().getSubjectName() + "\n";
+                        } else if (tf.getDay() == Day.WED) {
+                            wednesday += tf.getSubject().getSubjectName() + "\n";
+                        } else if (tf.getDay() == Day.THU) {
+                            thursday += tf.getSubject().getSubjectName() + "\n";
+                        } else if (tf.getDay() == Day.FRI) {
+                            friday += tf.getSubject().getSubjectName() + "\n";
+                        } else {
+                            saturday += tf.getSubject().getSubjectName() + "\n";
+                        }
+
+                        String finalStr = "\n*****" + t.getTimetableName() + "\n\n" + monday + tuesday + wednesday + thursday + friday + saturday;
+
+                        izlaz.write(finalStr);
+                    }
+                }
+            }
+        }
+        izlaz.close();
     }
 
 }
