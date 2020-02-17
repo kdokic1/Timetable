@@ -175,49 +175,4 @@ public class LoginController extends Application {
         loginPass.getStyleClass().add("myborderregion");
     }
 
-//    public void loginAction(ActionEvent actionEvent) throws IOException, SQLException {
-//        loginUsername.getStyleClass().remove("myborderregion");
-//        loginPass.getStyleClass().remove("myborderregion");
-//        if(!errorLabel.getText().isEmpty())
-//            errorLabel.setText("");
-//        ArrayList<User> users = new ArrayList<>();
-//        users=dao.getAllUsers();
-//
-//        boolean userExists = users.stream().anyMatch(user -> user.getUsername().equals(loginUsername.getText()) && user.getPassword().equals(loginPass.getText()));
-//
-//        if(userExists){
-//            String username=loginUsername.getText();
-//            Stage stg = (Stage) loginUsername.getScene().getWindow();
-//            stg.close();
-//
-//            Stage startStage=new Stage();
-//            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-//
-//            final Parent[] roots={null};
-//
-//            Task<Boolean> loadingTask=()->{
-//
-//            };
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startPage.fxml"),bundle);
-//            StartPageController ctrl = new StartPageController(username);
-//            loader.setController(ctrl);
-//            Parent root = loader.load();
-//            if(Locale.getDefault().getCountry().equals("BA"))
-//                startStage.setTitle("Raspored");
-//            else
-//                startStage.setTitle("Timetable");
-//            ctrl.setUsername(username);
-//            ctrl.setUserLabelText(username);
-//            startStage.setScene(new Scene(root,700,460));
-//            startStage.show();
-//        }
-//
-//        if(Locale.getDefault().getCountry().equals("Ba"))
-//            errorLabel.setText("Pogresno korisnicko ime ili lozinka");
-//        else
-//            errorLabel.setText("*Invalid username or password");
-//        loginUsername.getStyleClass().add("myborderregion");
-//        loginPass.getStyleClass().add("myborderregion");
-//    }
-
 }

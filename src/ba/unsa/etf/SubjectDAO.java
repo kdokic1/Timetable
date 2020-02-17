@@ -22,7 +22,6 @@ public class SubjectDAO {
     }
 
     private SubjectDAO(){
-        //            conn = DriverManager.getConnection("jdbc:sqlite:timetable.db"); //prvo sve konektujemo sa bazom
         conn=UsersDAO.getConn();
 
         try{
