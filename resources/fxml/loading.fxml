@@ -13,7 +13,7 @@
                 <Font name="Century Gothic" size="12.0" />
             </font>
         </Label>
-      <ImageView fitHeight="495.0" fitWidth="731.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="497.0" fitWidth="731.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/books.jpg" />
          </image>
