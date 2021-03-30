@@ -5,7 +5,7 @@
 ## Overview
 
 
-Timetable helps users to manage their time better. It allows them to create few different timetables, so they can use it for school and other activities. They can use it in two different languages. 
+Timetable helps users to manage their time. It allows them to create few different timetables, so they can use them for school and other activities. 
 
 
 ## Features 
